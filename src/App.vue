@@ -4,7 +4,7 @@ import TitleCard from './components/TitleCard.vue'
 
 <template>
   <div class="px-10 py-12">
-    <div class="flex lg:flex-col lg:w-64">
+    <div class="flex lg:flex-col lg:w-72">
       <TitleCard />
       <TitleCard />
       <TitleCard />
