@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TitleCard from './components/TitleCard.vue'
 import FiltersCard from './components/FiltersCard.vue'
+import RoadmapCard from './components/RoadmapCard.vue'
 </script>
 
 <template>
@@ -8,8 +9,7 @@ import FiltersCard from './components/FiltersCard.vue'
     <div class="flex lg:flex-col lg:w-72 justify-between lg:justify-start">
       <TitleCard />
       <FiltersCard />
-      <TitleCard />
-      <!-- <RoadmapCard /> -->
+      <RoadmapCard />
     </div>
     <div class="flex w-full h-full bg-white"></div>
   </div>
