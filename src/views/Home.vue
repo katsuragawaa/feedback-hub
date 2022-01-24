@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import MenuCards from '../components/menu-cards/MenuCards.vue'
 import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue';
+import FeedbackList from '../components/feedback-list/FeedbackList.vue';
 </script>
 
 <template>
@@ -8,5 +9,6 @@ import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue'
     <MenuCards />
     <div class="h-10"></div>
     <FeedbackToolbar class="xl:ml-7" />
+    <FeedbackList />
   </div>
 </template>
