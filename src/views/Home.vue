@@ -8,7 +8,9 @@ import FeedbackList from '../components/feedback-list/FeedbackList.vue';
   <div class="px-10 xl:px-36 py-14 bg-zinc-200 flex flex-col xl:flex-row">
     <MenuCards />
     <div class="h-10"></div>
-    <FeedbackToolbar class="xl:ml-7" />
-    <FeedbackList />
+    <div class="flex flex-col xl:ml-7 w-full">
+      <FeedbackToolbar />
+      <FeedbackList />
+    </div>
   </div>
 </template>
