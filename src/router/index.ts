@@ -1,7 +1,18 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../views/Home.vue'
+import Feedback from '../views/Feedback.vue'
+import NewFeedback from '../views/NewFeedback.vue'
 
-const routes: RouteRecordRaw[] = [{ path: '/', name: 'Home', component: Home }]
+const routes: RouteRecordRaw[] = [
+  { path: '/', name: 'Home', component: Home },
+  {
+    path: '/feedback',
+    name: 'Feedback',
+    component: Feedback,
+    redirect: '/',
+    children: [{ path: 'new', name: 'NewFeedback', component: NewFeedback }],
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(),
