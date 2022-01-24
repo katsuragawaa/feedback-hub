@@ -1,10 +1,24 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
+type SortBy = {
+  title: string;
+  index: number;
+}
+
 const sortOptions = {
   'upvotes-desc': { title: 'Most Upvotes', index: 0 },
   'upvotes-asc': { title: 'Least Upvotes', index: 1 },
   'comments-desc': { title: 'Most Comments', index: 2 },
   'comments-asc': { title: 'Least Comments', index: 3 },
 }
+
+const selectedOption = ref(sortOptions['upvotes-desc'])
+
+const selectOption = (option: SortBy) => {
+  selectedOption.value = option
+}
+
 </script>
 
 <template>
@@ -29,7 +43,7 @@ const sortOptions = {
       >
         <div>
           Sort by :
-          <span class="font-bold ml-1">Most Upvotes</span>
+          <span class="font-bold ml-1">{{ selectedOption.title }}</span>
         </div>
         <img src="../../assets/shared/white-arrow.svg" />
       </button>
@@ -47,13 +61,13 @@ const sortOptions = {
             <div
               v-for="(option, id) in sortOptions"
               :key="id"
-              href="javascript:void(0)"
               :tabindex="option.index"
               class="text-gray-700 flex items-center justify-between w-full px-4 py-3 text-sm leading-5 text-left cursor-pointer hover:text-purple-700"
               role="menuitem"
+              @click="selectOption(option)"
             >
               <span>{{ option.title }}</span>
-              <span v-if="option.index === 2">
+              <span v-if="option.index === selectedOption.index">
                 <img src="../../assets/shared/icon-check.svg" />
               </span>
             </div>
