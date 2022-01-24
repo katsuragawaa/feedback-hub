@@ -26,10 +26,10 @@ const selectFilter = (filter: string) => {
         @click="selectFilter(filter)"
         :class="
           selectedFilter === filter
-            ? 'bg-opacity-100 text-white'
-            : 'text-blue-700'
+            ? 'text-white bg-opacity-100'
+            : 'text-blue-700  bg-opacity-20'
         "
-        class="rounded-lg py-2 px-6 mr-2 mb-3 w-fit bg-blue-600 bg-opacity-20 font-medium text-sm hover:bg-opacity-40 duration-500 cursor-pointer"
+        class="rounded-lg py-2 px-6 mr-2 mb-3 w-fit bg-blue-600 font-medium text-sm hover:bg-opacity-40 duration-500 cursor-pointer"
       >{{ filter }}</div>
     </div>
   </div>
