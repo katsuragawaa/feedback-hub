@@ -17,7 +17,7 @@ const selectFilter = (filter: string) => {
 </script>
 
 <template>
-  <div class="w-full rounded-xl bg-white mx-4 lg:my-4 lg:mx-0">
+  <div class="w-full rounded-xl bg-white mx-4 xl:my-4 xl:mx-0">
     <div class="p-6 h-full flex flex-wrap -mb-3">
       <div
         v-for="(filter, id) in filters"
