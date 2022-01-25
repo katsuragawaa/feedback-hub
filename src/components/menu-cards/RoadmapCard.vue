@@ -15,7 +15,7 @@ const roadmap = {
         <a href="#" class="underline text-sm text-blue-600 hover:text-opacity-60">View</a>
       </div>
       <div class="flex flex-col text-gray-500">
-        <div v-for="(value, status) in roadmap" :key="value.id" class="flex flex-grow mt-2">
+        <div v-for="(value, status) in roadmap" :key="value.id" class="flex flex-grow mt-1">
           <div class="w-4 text-center flex items-center mr-2">
             <div class="w-2 h-2 rounded-full" :class="value.color"></div>
           </div>
