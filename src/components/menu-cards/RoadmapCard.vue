@@ -12,7 +12,10 @@ const roadmap = {
     <div class="p-6 h-full flex flex-col justify-between">
       <div class="font-bold text-lg flex justify-between items-baseline">
         <span class="font-bold text-lg text-gray-700">Roadmap</span>
-        <a href="#" class="underline text-sm text-blue-600 hover:text-opacity-60">View</a>
+        <router-link
+          :to="{ name: 'Roadmap' }"
+          class="underline text-sm text-blue-600 hover:text-opacity-60"
+        >View</router-link>
       </div>
       <div class="flex flex-col text-gray-500">
         <div v-for="(value, status) in roadmap" :key="value.id" class="flex flex-grow mt-1">
