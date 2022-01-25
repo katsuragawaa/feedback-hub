@@ -7,7 +7,7 @@ import FeedbackList from '../components/feedback-list/FeedbackList.vue';
 <template>
   <div class="px-10 xl:px-36 py-14 md:p-0 min-h-screen bg-zinc-200 flex flex-col xl:flex-row">
     <MenuCards />
-    <div class="h-10"></div>
+    <div class="h-10 md:hidden"></div>
     <div class="flex flex-col xl:ml-7 w-full">
       <FeedbackToolbar />
       <FeedbackList />

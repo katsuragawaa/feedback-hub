@@ -6,10 +6,10 @@ import RoadmapCard from './RoadmapCard.vue'
 
 <template>
   <div
-    class="flex xl:flex-col xl:w-96 justify-between xl:justify-start md:flex-col md:fixed md:w-full"
+    class="flex xl:flex-col xl:w-96 justify-between xl:justify-start md:flex-col md:w-full"
   >
     <TitleCard />
-    <FiltersCard />
-    <RoadmapCard />
+    <FiltersCard class="md:hidden" />
+    <RoadmapCard class="md:hidden" />
   </div>
 </template>

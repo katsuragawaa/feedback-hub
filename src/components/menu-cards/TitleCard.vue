@@ -6,7 +6,9 @@ const toggleNavbar = () => navbarOn.value = !navbarOn.value;
 </script>
 
 <template>
-  <div class="w-full flex justify-between items-center p-6 rounded-xl gradient-bg md:rounded-none">
+  <div
+    class="w-full flex justify-between items-center p-6 rounded-xl gradient-bg md:rounded-none md:fixed md:z-10"
+  >
     <div class="flex flex-col">
       <div class="my-10 md:m-0"></div>
       <div class="font-bold text-lg text-white mb-1">Feedback Hub</div>
