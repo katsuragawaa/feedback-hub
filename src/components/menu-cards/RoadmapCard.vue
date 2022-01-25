@@ -10,7 +10,7 @@ const roadmap = {
 <template>
   <div class="w-full rounded-xl bg-white">
     <div class="p-6 h-full flex flex-col justify-between">
-      <div class="font-bold text-lg flex justify-between items-baseline">
+      <div class="font-bold text-lg flex justify-between items-baseline mb-4">
         <span class="font-bold text-lg text-gray-700">Roadmap</span>
         <router-link
           :to="{ name: 'Roadmap' }"
