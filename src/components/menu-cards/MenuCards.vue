@@ -5,7 +5,9 @@ import RoadmapCard from './RoadmapCard.vue'
 </script>
 
 <template>
-  <div class="flex xl:flex-col xl:w-72 justify-between xl:justify-start">
+  <div
+    class="flex xl:flex-col xl:w-96 justify-between xl:justify-start md:flex-col md:fixed md:w-full"
+  >
     <TitleCard />
     <FiltersCard />
     <RoadmapCard />
