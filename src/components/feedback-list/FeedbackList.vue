@@ -35,6 +35,8 @@ const feedbacks = ref<Feedback[]>([])
 setTimeout(() => {
   feedbacks.value = dummyFeedbacks
 }, 1000)
+
+// TODO create component when there's no feedbacks
 </script>
 
 <template>
