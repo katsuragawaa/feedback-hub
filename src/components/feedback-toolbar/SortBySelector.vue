@@ -43,7 +43,7 @@ const selectOption = (option: SortBy) => {
   <div class="flex items-center justify-center">
     <div class="relative inline-block text-left">
       <button
-        class="inline-flex items-center justify-center w-full text-sm transition duration-150 ease-in-out hover:text-neutral-300"
+        class="inline-flex items-center justify-center w-full text-sm transition duration-150 ease-in-out text-gray-300 md:text-gray-600 hover:brightness-200 md:hover:brightness-0"
         type="button"
         @click="dropdownVisibility = !dropdownVisibility"
       >
@@ -52,7 +52,9 @@ const selectOption = (option: SortBy) => {
           <span class="font-bold ml-1">{{ selectedOption.title }}</span>
         </div>
         <div class="ml-2 duration-300" :class="dropdownVisibility && 'rotate-180'">
-          <img class="w-3" src="../../assets/shared/white-arrow.svg" />
+          <svg class="stroke-current" width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 1l4 4 4-4" stroke-width="2" fill="none" fill-rule="evenodd" />
+          </svg>
         </div>
       </button>
 
