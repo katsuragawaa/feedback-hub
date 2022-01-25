@@ -41,7 +41,7 @@ const selectOption = (option: SortBy) => {
   -->
 
   <div class="flex items-center justify-center">
-    <div class="relative inline-block text-left dropdown">
+    <div class="relative inline-block text-left">
       <button
         class="inline-flex items-center justify-center w-full text-sm transition duration-150 ease-in-out hover:text-neutral-300"
         type="button"
@@ -51,7 +51,9 @@ const selectOption = (option: SortBy) => {
           Sort by :
           <span class="font-bold ml-1">{{ selectedOption.title }}</span>
         </div>
-        <img src="../../assets/shared/white-arrow.svg" />
+        <div class="ml-2 duration-300" :class="dropdownVisibility && 'rotate-180'">
+          <img class="w-3" src="../../assets/shared/white-arrow.svg" />
+        </div>
       </button>
 
       <transition name="list">
