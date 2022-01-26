@@ -25,10 +25,10 @@ const vote = () => {
 </script>
 
 <template>
-  <div class="flex justify-between bg-white rounded-xl p-8 mb-4">
-    <div class="flex">
+  <div class="flex justify-between bg-white rounded-xl p-8 mb-4 md:relative">
+    <div class="flex md:flex-col md:items-start">
       <div
-        class="flex flex-col justify-between items-center h-14 w-11 py-3 px-2 bg-blue-600 rounded-lg cursor-pointer duration-200"
+        class="flex flex-col justify-between items-center h-14 w-11 py-3 px-2 bg-blue-600 rounded-lg cursor-pointer duration-200 md:order-1 md:flex-row md:h-fit md:w-fit md:py-2 md:px-4 md:mt-4"
         :class="voted ? 'bg-opacity-100 text-white' : 'bg-opacity-10'"
         @click="vote"
       >
@@ -47,9 +47,9 @@ const vote = () => {
             fill-rule="evenodd"
           />
         </svg>
-        <div class="font-bold text-sm">{{ feedback.votes }}</div>
+        <div class="font-bold text-sm md:ml-3">{{ feedback.votes }}</div>
       </div>
-      <div class="flex flex-col mx-10 cursor-pointer hover:text-blue-600 duration-300">
+      <div class="flex flex-col mx-10 cursor-pointer hover:text-blue-600 duration-300 md:m-0">
         <div class="font-bold sm:text-lg text-base">{{ feedback.title }}</div>
         <div class="text-gray-500 mt-2 mb-4 sm:text-base text-sm">{{ feedback.description }}</div>
         <div
@@ -57,7 +57,7 @@ const vote = () => {
         >{{ feedback.type }}</div>
       </div>
     </div>
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center md:absolute md:right-8 md:bottom-8">
       <div class="min-w-max">
         <img class="w-5" src="../../assets/shared/icon-comments.svg" />
       </div>
