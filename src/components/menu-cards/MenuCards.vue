@@ -22,7 +22,6 @@ const close = () => {
   <transition name="slide">
     <div
       v-if="sidebarOn"
-      :class="sidebarOn ? 'show' : 'hide'"
       class="absolute flex justify-end bg-black bg-opacity-50 w-screen h-screen z-10"
     >
       <div class="mt-[100px] p-6 bg-gray-200 w-80">
