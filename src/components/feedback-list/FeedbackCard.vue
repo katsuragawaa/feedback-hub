@@ -15,7 +15,7 @@ const { feedback } = defineProps<{
 const voted = ref(false)
 const vote = () => {
   voted.value = !voted.value
-  
+
   if (voted.value) {
     feedback.votes++
   } else {
@@ -50,8 +50,8 @@ const vote = () => {
         <div class="font-bold text-sm">{{ feedback.votes }}</div>
       </div>
       <div class="flex flex-col mx-10 cursor-pointer hover:text-blue-600 duration-300">
-        <div class="font-bold text-lg">{{ feedback.title }}</div>
-        <div class="text-gray-500 mt-2 mb-4">{{ feedback.description }}</div>
+        <div class="font-bold sm:text-lg text-base">{{ feedback.title }}</div>
+        <div class="text-gray-500 mt-2 mb-4 sm:text-base text-sm">{{ feedback.description }}</div>
         <div
           class="rounded-lg py-2 px-6 w-fit bg-blue-600 font-medium text-sm text-blue-700 bg-opacity-20"
         >{{ feedback.type }}</div>
