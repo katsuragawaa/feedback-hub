@@ -85,7 +85,7 @@ const selectOption = (option: SortBy) => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .list-enter-active,
 .list-leave-active {
   transition: all 0.3s ease;
