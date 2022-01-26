@@ -23,7 +23,7 @@ const close = () => {
     <div
       v-if="sidebarOn"
       :class="sidebarOn ? 'show' : 'hide'"
-      class="absolute flex justify-end bg-black bg-opacity-50 w-screen h-screen z-10 duration-500 transition"
+      class="absolute flex justify-end bg-black bg-opacity-50 w-screen h-screen z-10"
     >
       <div class="mt-[100px] p-6 bg-gray-200 w-80">
         <FiltersCard />
@@ -37,12 +37,11 @@ const close = () => {
 <style scoped>
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.8s ease-in-out;
 }
 
 .slide-enter-from,
 .slide-leave-to {
-  opacity: 0;
   transform: translateX(100%);
 }
 </style>
