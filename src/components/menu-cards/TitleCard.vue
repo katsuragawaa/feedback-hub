@@ -1,5 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
+function handleWindowResize() {
+  sidebarOn.value = false
+  emit('close')
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleWindowResize)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', handleWindowResize)
+})
 
 const emit = defineEmits<{
   (e: 'open'): void
