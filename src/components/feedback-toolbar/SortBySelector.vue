@@ -43,7 +43,7 @@ const selectOption = (option: SortBy) => {
   <div class="flex items-center justify-center">
     <div class="relative inline-block text-left">
       <button
-        class="inline-flex items-center justify-center w-full text-sm transition duration-150 ease-in-out text-gray-300 md:text-gray-600 hover:brightness-200 md:hover:brightness-0"
+        class="inline-flex items-center justify-center w-full transition duration-150 ease-in-out text-gray-300 md:text-gray-600 hover:brightness-200 md:hover:brightness-0"
         type="button"
         @click="dropdownVisibility = !dropdownVisibility"
       >
