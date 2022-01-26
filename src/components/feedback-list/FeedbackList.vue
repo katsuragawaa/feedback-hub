@@ -40,7 +40,7 @@ setTimeout(() => {
 </script>
 
 <template>
-  <div class="mt-6">
+  <div class="mt-6 md:mt-0">
     <FeedbackCard v-for="feedback in feedbacks" :feedback="feedback" />
   </div>
 </template>
