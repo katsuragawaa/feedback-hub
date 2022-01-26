@@ -5,6 +5,7 @@ import RoadmapCard from './RoadmapCard.vue'
 import { ref } from 'vue'
 
 const sidebarOn = ref(false)
+
 const open = () => {
   sidebarOn.value = true
 }
