@@ -14,11 +14,6 @@ type Feedback = {
   comments: number
 }
 
-type SortBy = {
-  title: string
-  index: number
-}
-
 const dummyFeedbacks = [
   {
     id: '1',
@@ -59,18 +54,18 @@ export default defineComponent({
     handleFilterSelection(filter: string) {
       this.selectedFilter = filter
     },
-    handleSort(option: SortBy) {
-      switch (option.index) {
-        case 0:
+    handleSort(option: string) {
+      switch (option) {
+        case 'upvotes-desc':
           this.feedbacks = _.sortBy(this.feedbacks, 'votes').reverse()
           break;
-        case 1:
+        case 'upvotes-asc':
           this.feedbacks = _.sortBy(this.feedbacks, 'votes')
           break;
-        case 2:
+        case 'comments-desc':
           this.feedbacks = _.sortBy(this.feedbacks, 'comments').reverse()
           break;
-        case 3:
+        case 'comments-asc':
           this.feedbacks = _.sortBy(this.feedbacks, 'comments')
           break;
       }
@@ -79,7 +74,6 @@ export default defineComponent({
   computed: {
     filteredFeedbacks(): Feedback[] {
       const filter = this.selectedFilter || 'All'
-      console.log(this.feedbacks)
       if (filter === 'All') {
         return this.feedbacks
       }

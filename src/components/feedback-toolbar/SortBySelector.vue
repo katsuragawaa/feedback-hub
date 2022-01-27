@@ -2,26 +2,27 @@
 import { ref } from 'vue'
 
 type SortBy = {
-  title: string;
-  index: number;
+  title: string
+  index: number
+  key: string
 }
 
 const emit = defineEmits<{
-  (e: 'sort', option: SortBy): void;
+  (e: 'sort', option: string): void
 }>()
 
-const sortOptions = {
-  'upvotes-desc': { title: 'Most Upvotes', index: 0 },
-  'upvotes-asc': { title: 'Least Upvotes', index: 1 },
-  'comments-desc': { title: 'Most Comments', index: 2 },
-  'comments-asc': { title: 'Least Comments', index: 3 },
-}
+const sortOptions = [
+  { title: 'Most Upvotes', index: 0, key: 'upvotes-desc' },
+  { title: 'Least Upvotes', index: 1, key: 'upvotes-asc' },
+  { title: 'Most Comments', index: 2, key: 'comments-desc' },
+  { title: 'Least Comments', index: 3, key: 'comments-asc' },
+]
 
-const selectedOption = ref(sortOptions['upvotes-desc'])
+const selectedOption = ref(sortOptions[0])
 const dropdownVisibility = ref(false)
 
 const selectOption = (option: SortBy) => {
-  emit('sort', option)
+  emit('sort', option.key)
   selectedOption.value = option
   dropdownVisibility.value = false
 }
@@ -67,8 +68,8 @@ const selectOption = (option: SortBy) => {
         >
           <div class="py-1">
             <div
-              v-for="(option, id) in sortOptions"
-              :key="id"
+              v-for="(option) in sortOptions"
+              :key="option.key"
               :tabindex="option.index"
               class="text-gray-700 flex items-center justify-between w-full px-4 py-3 text-sm leading-5 text-left cursor-pointer hover:text-purple-700"
               role="menuitem"
