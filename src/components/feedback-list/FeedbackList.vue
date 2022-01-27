@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import FeedbackCard from './FeedbackCard.vue'
 import FeedbackEmpty from './FeedbackEmpty.vue'
 
@@ -12,57 +12,26 @@ type Feedback = {
   comments: number
 }
 
-const dummyFeedbacks = [
-  {
-    id: '1',
-    title: 'More comprehensive reports',
-    description:
-      'It would be great to see a more detailed breakdown of solutions.',
-    type: 'Enhancement',
-    votes: 123,
-    comments: 4,
-  },
-  {
-    id: '2',
-    title: 'Add tags for solutions',
-    description: 'Easier to search for solutions based on a specific stack.',
-    type: 'Feature',
-    votes: 23,
-    comments: 13,
-  },
-]
-
 export default defineComponent({
   name: 'FeedbackList',
   components: {
     FeedbackCard,
-    FeedbackEmpty
+    FeedbackEmpty,
   },
   props: {
     selectedFilter: {
       type: String,
-      required: true
+      required: true,
+    },
+    filteredFeedbacks: {
+      type: Array as PropType<Feedback[]>,
+      required: true,
+    },
+    noFeedback: {
+      type: Boolean,
+      default: false
     }
   },
-  data() {
-    return {
-      feedbacks: [] as Feedback[]
-    }
-  },
-  methods: {
-    fetchFeedback(): void {
-      this.feedbacks = dummyFeedbacks
-    }
-  },
-  computed: {
-    filteredFeedbacks(): Feedback[] {
-      const filter = this.selectedFilter
-      if (filter === 'All') {
-        return dummyFeedbacks
-      }
-      return dummyFeedbacks.filter((feedback) => feedback.type === filter)
-    }
-  }
 })
 </script>
 
@@ -73,10 +42,6 @@ export default defineComponent({
       v-for="feedback in filteredFeedbacks"
       :feedback="feedback"
     />
-    <FeedbackEmpty
-      v-else
-      :selectedFilter="selectedFilter"
-      :noFeedback="filteredFeedbacks.length === 0"
-    />
+    <FeedbackEmpty v-else :selectedFilter="selectedFilter" :noFeedback="noFeedback" />
   </div>
 </template>

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import SortBySelector from './SortBySelector.vue'
 import AddFeedbackButton from './AddFeedbackButton.vue';
+
+const { feedbacksCount } = defineProps<{
+  feedbacksCount: number
+}>()
+
 </script>
 
 <template>
@@ -9,7 +14,7 @@ import AddFeedbackButton from './AddFeedbackButton.vue';
   >
     <div class="flex items-center">
       <img class="w-7 h-7 md:hidden" src="../../assets/suggestions/icon-suggestions.svg" />
-      <span class="font-bold text-lg px-6 md:hidden">7 Suggestions</span>
+      <span class="font-bold text-lg px-6 md:hidden">{{ feedbacksCount }} Suggestions</span>
       <SortBySelector />
     </div>
     <AddFeedbackButton />

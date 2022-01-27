@@ -1,15 +1,70 @@
-<script setup lang="ts">
+<script lang="ts">
 import MenuCards from '../components/menu-cards/MenuCards.vue'
 import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue';
 import FeedbackList from '../components/feedback-list/FeedbackList.vue';
-import { ref } from 'vue';
+import { defineComponent } from 'vue';
 
-const selectedFilter = ref('')
-
-function handleFilterSelection(filter: string) {
-  selectedFilter.value = filter
+type Feedback = {
+  id: string
+  title: string
+  description: string
+  type: string
+  votes: number
+  comments: number
 }
 
+const dummyFeedbacks = [
+  {
+    id: '1',
+    title: 'More comprehensive reports',
+    description:
+      'It would be great to see a more detailed breakdown of solutions.',
+    type: 'Enhancement',
+    votes: 123,
+    comments: 4,
+  },
+  {
+    id: '2',
+    title: 'Add tags for solutions',
+    description: 'Easier to search for solutions based on a specific stack.',
+    type: 'Feature',
+    votes: 23,
+    comments: 13,
+  },
+]
+
+export default defineComponent({
+  name: 'Home',
+  components: {
+    MenuCards,
+    FeedbackToolbar,
+    FeedbackList
+  },
+  data() {
+    return {
+      selectedFilter: '',
+      feedbacks: [] as Feedback[]
+    }
+  },
+  mounted() {
+    this.feedbacks = dummyFeedbacks
+  },
+  methods: {
+    handleFilterSelection(filter: string) {
+      this.selectedFilter = filter
+    }
+  },
+  computed: {
+    filteredFeedbacks(): Feedback[] {
+      const filter = this.selectedFilter || 'All'
+      console.log(filter)
+      if (filter === 'All') {
+        return this.feedbacks
+      }
+      return this.feedbacks.filter((feedback) => feedback.type === filter)
+    },
+  },
+})
 </script>
 
 <template>
@@ -17,8 +72,8 @@ function handleFilterSelection(filter: string) {
     <MenuCards @filterSelected="handleFilterSelection" />
     <div class="h-10 md:hidden"></div>
     <div class="flex flex-col xl:ml-7 w-full">
-      <FeedbackToolbar />
-      <FeedbackList :selectedFilter="selectedFilter" />
+      <FeedbackToolbar :feedbacksCount="filteredFeedbacks.length" />
+      <FeedbackList :selectedFilter="selectedFilter" :filteredFeedbacks="filteredFeedbacks" :noFeedback="feedbacks.length === 0" />
     </div>
   </div>
 </template>
