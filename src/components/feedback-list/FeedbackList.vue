@@ -1,21 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import FeedbackCard from './FeedbackCard.vue';
+import { ref } from 'vue'
+import FeedbackCard from './FeedbackCard.vue'
+import FeedbackEmpty from './FeedbackEmpty.vue'
 
 type Feedback = {
-  id: string;
-  title: string;
-  description: string;
-  type: string;
-  votes: number;
-  comments: number;
+  id: string
+  title: string
+  description: string
+  type: string
+  votes: number
+  comments: number
 }
 
 const dummyFeedbacks = [
   {
     id: '1',
     title: 'More comprehensive reports',
-    description: 'It would be great to see a more detailed breakdown of solutions.',
+    description:
+      'It would be great to see a more detailed breakdown of solutions.',
     type: 'Feature',
     votes: 123,
     comments: 4,
@@ -32,15 +34,16 @@ const dummyFeedbacks = [
 
 const feedbacks = ref<Feedback[]>([])
 
-setTimeout(() => {
-  feedbacks.value = dummyFeedbacks
-}, 1000)
+// setTimeout(() => {
+//   feedbacks.value = dummyFeedbacks
+// }, 1000)
 
 // TODO create component when there's no feedbacks
 </script>
 
 <template>
   <div class="mt-6 md:mt-0 md:mx-6">
-    <FeedbackCard v-for="feedback in feedbacks" :feedback="feedback" />
+    <FeedbackCard v-if="feedbacks.length" v-for="feedback in feedbacks" :feedback="feedback" />
+    <FeedbackEmpty v-else />
   </div>
 </template>
