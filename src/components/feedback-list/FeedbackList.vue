@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { ref } from 'vue'
+<script lang="ts">
+import { defineComponent } from 'vue'
 import FeedbackCard from './FeedbackCard.vue'
 import FeedbackEmpty from './FeedbackEmpty.vue'
 
@@ -18,7 +18,7 @@ const dummyFeedbacks = [
     title: 'More comprehensive reports',
     description:
       'It would be great to see a more detailed breakdown of solutions.',
-    type: 'Feature',
+    type: 'Enhancement',
     votes: 123,
     comments: 4,
   },
@@ -26,26 +26,57 @@ const dummyFeedbacks = [
     id: '2',
     title: 'Add tags for solutions',
     description: 'Easier to search for solutions based on a specific stack.',
-    type: 'Enhancement',
+    type: 'Feature',
     votes: 23,
     comments: 13,
   },
 ]
 
-const { selectedFilter } = defineProps<{
-  selectedFilter: string
-}>()
-
-const feedbacks = ref<Feedback[]>([])
-
-setTimeout(() => {
-  feedbacks.value = dummyFeedbacks
-}, 5000)
+export default defineComponent({
+  name: 'FeedbackList',
+  components: {
+    FeedbackCard,
+    FeedbackEmpty
+  },
+  props: {
+    selectedFilter: {
+      type: String,
+      required: true
+    }
+  },
+  data() {
+    return {
+      feedbacks: [] as Feedback[]
+    }
+  },
+  methods: {
+    fetchFeedback(): void {
+      this.feedbacks = dummyFeedbacks
+    }
+  },
+  computed: {
+    filteredFeedbacks(): Feedback[] {
+      const filter = this.selectedFilter
+      if (filter === 'All') {
+        return dummyFeedbacks
+      }
+      return dummyFeedbacks.filter((feedback) => feedback.type === filter)
+    }
+  }
+})
 </script>
 
 <template>
   <div class="mt-6 md:mt-0 md:mx-6">
-    <FeedbackCard v-if="feedbacks.length" v-for="feedback in feedbacks" :feedback="feedback" />
-    <FeedbackEmpty v-else :selectedFilter="selectedFilter" :noFeedback="feedbacks.length === 0" />
+    <FeedbackCard
+      v-if="filteredFeedbacks.length"
+      v-for="feedback in filteredFeedbacks"
+      :feedback="feedback"
+    />
+    <FeedbackEmpty
+      v-else
+      :selectedFilter="selectedFilter"
+      :noFeedback="filteredFeedbacks.length === 0"
+    />
   </div>
 </template>
