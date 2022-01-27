@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { category, noFeedback } = defineProps({
-  category: {
+const { selectedFilter, noFeedback } = defineProps({
+  selectedFilter: {
     type: String,
     default: '',
   },
@@ -19,7 +19,7 @@ const { category, noFeedback } = defineProps({
     <div class="mt-14 mb-6">
       <div class="text-2xl font-bold text-gray-600">
         <span v-if="noFeedback">There is no feedback yet</span>
-        <span v-else>No feedback of category "{{ category }}"</span>
+        <span v-else>No feedback of category "{{ selectedFilter }}"</span>
       </div>
     </div>
     <div>

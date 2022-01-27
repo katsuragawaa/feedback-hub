@@ -32,8 +32,8 @@ const dummyFeedbacks = [
   },
 ]
 
-const { category } = defineProps<{
-  category: string
+const { selectedFilter } = defineProps<{
+  selectedFilter: string
 }>()
 
 const feedbacks = ref<Feedback[]>([])
@@ -48,6 +48,6 @@ setTimeout(() => {
 <template>
   <div class="mt-6 md:mt-0 md:mx-6">
     <FeedbackCard v-if="feedbacks.length" v-for="feedback in feedbacks" :feedback="feedback" />
-    <FeedbackEmpty v-else :category="category" :noFeedback="feedbacks.length === 0" />
+    <FeedbackEmpty v-else :selectedFilter="selectedFilter" :noFeedback="feedbacks.length === 0" />
   </div>
 </template>

@@ -13,13 +13,12 @@ function handleFilterSelection(filter: string) {
 </script>
 
 <template>
-  {{ selectedFilter }}
   <div class="px-10 xl:px-36 py-14 md:p-0 min-h-screen bg-zinc-200 flex flex-col xl:flex-row">
     <MenuCards @filterSelected="handleFilterSelection" />
     <div class="h-10 md:hidden"></div>
     <div class="flex flex-col xl:ml-7 w-full">
       <FeedbackToolbar />
-      <FeedbackList :category="selectedFilter" />
+      <FeedbackList :selectedFilter="selectedFilter" />
     </div>
   </div>
 </template>
