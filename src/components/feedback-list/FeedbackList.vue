@@ -32,11 +32,15 @@ const dummyFeedbacks = [
   },
 ]
 
+const { category } = defineProps<{
+  category: string
+}>()
+
 const feedbacks = ref<Feedback[]>([])
 
 setTimeout(() => {
   feedbacks.value = dummyFeedbacks
-}, 1000)
+}, 5000)
 
 // TODO: get selected categories
 </script>
@@ -44,6 +48,6 @@ setTimeout(() => {
 <template>
   <div class="mt-6 md:mt-0 md:mx-6">
     <FeedbackCard v-if="feedbacks.length" v-for="feedback in feedbacks" :feedback="feedback" />
-    <FeedbackEmpty v-else :category="'UI'" :noFeedback="feedbacks.length == 0" />
+    <FeedbackEmpty v-else :category="category" :noFeedback="feedbacks.length === 0" />
   </div>
 </template>

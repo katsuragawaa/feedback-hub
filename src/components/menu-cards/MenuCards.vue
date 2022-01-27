@@ -12,12 +12,20 @@ const open = () => {
 const close = () => {
   sidebarOn.value = false
 }
+
+function handleFilterSelection(filter: string) {
+  emit('filterSelected', filter)
+}
+
+const emit = defineEmits<{
+  (e: 'filterSelected', filter: string): void
+}>()
 </script>
 
 <template>
   <div class="flex xl:flex-col xl:w-96 justify-between xl:justify-start">
     <TitleCard @open="open" @close="close" />
-    <FiltersCard class="md:hidden" />
+    <FiltersCard class="md:hidden" @filterSelected="handleFilterSelection" />
     <RoadmapCard class="md:hidden" />
   </div>
   <transition name="slide">

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 const filters = {
   0: 'All',
@@ -8,12 +8,17 @@ const filters = {
   3: 'Enhancement',
   4: 'Bug',
   5: 'Feature',
-};
-const selectedFilter = ref(filters[0]);
+}
+const selectedFilter = ref('All')
 
 const selectFilter = (filter: string) => {
-  selectedFilter.value = filter;
-};
+  emit('filterSelected', filter)
+  selectedFilter.value = filter
+}
+
+const emit = defineEmits<{
+  (e: 'filterSelected', filter: string): void
+}>()
 </script>
 
 <template>

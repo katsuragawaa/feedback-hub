@@ -9,7 +9,6 @@ const { category, noFeedback } = defineProps({
     default: false,
   },
 })
-const titleString = noFeedback ? 'There is no feedback yet' : `No feedback of category "${category}"`
 </script>
 
 <template>
@@ -18,7 +17,10 @@ const titleString = noFeedback ? 'There is no feedback yet' : `No feedback of ca
       <img class="w-36" src="../../assets/suggestions/illustration-empty.svg" />
     </div>
     <div class="mt-14 mb-6">
-      <span class="text-2xl font-bold text-gray-600">{{ titleString }}</span>
+      <div class="text-2xl font-bold text-gray-600">
+        <span v-if="noFeedback">There is no feedback yet</span>
+        <span v-else>No feedback of category "{{ category }}"</span>
+      </div>
     </div>
     <div>
       <span
