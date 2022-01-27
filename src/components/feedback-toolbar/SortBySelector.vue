@@ -16,10 +16,6 @@ const sortOptions = {
 const selectedOption = ref(sortOptions['upvotes-desc'])
 const dropdownVisibility = ref(false)
 
-const openDropdown = () => {
-  dropdownVisibility.value = true
-}
-
 const selectOption = (option: SortBy) => {
   selectedOption.value = option
   dropdownVisibility.value = false
