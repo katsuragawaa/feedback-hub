@@ -40,6 +40,7 @@ export default defineComponent({
     <FeedbackCard
       v-if="filteredFeedbacks.length"
       v-for="feedback in filteredFeedbacks"
+      :key="feedback.id"
       :feedback="feedback"
     />
     <FeedbackEmpty v-else :selectedFilter="selectedFilter" :noFeedback="noFeedback" />
