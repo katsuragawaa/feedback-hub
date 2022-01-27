@@ -62,11 +62,8 @@ export default defineComponent({
       this.selectedFilter = filter
     },
     handleSort(option: SortBy) {
-      this.feedbacks = _.orderBy(
-        this.feedbacks,
-        [option.key],
-      )
-      option.order === 'asc' && this.feedbacks.reverse()
+      const order = option.order === 'asc' ? 'asc' : 'desc' // TS won't let me just use option.order
+      this.feedbacks = _.orderBy(this.feedbacks, [option.key], [order])
     },
   },
   computed: {
