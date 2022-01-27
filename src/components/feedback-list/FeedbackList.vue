@@ -41,8 +41,6 @@ const feedbacks = ref<Feedback[]>([])
 setTimeout(() => {
   feedbacks.value = dummyFeedbacks
 }, 5000)
-
-// TODO: get selected categories
 </script>
 
 <template>
