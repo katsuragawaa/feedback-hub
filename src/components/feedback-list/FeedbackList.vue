@@ -34,16 +34,16 @@ const dummyFeedbacks = [
 
 const feedbacks = ref<Feedback[]>([])
 
-// setTimeout(() => {
-//   feedbacks.value = dummyFeedbacks
-// }, 1000)
+setTimeout(() => {
+  feedbacks.value = dummyFeedbacks
+}, 1000)
 
-// TODO create component when there's no feedbacks
+// TODO: get selected categories
 </script>
 
 <template>
   <div class="mt-6 md:mt-0 md:mx-6">
     <FeedbackCard v-if="feedbacks.length" v-for="feedback in feedbacks" :feedback="feedback" />
-    <FeedbackEmpty v-else />
+    <FeedbackEmpty v-else :category="'UI'" :noFeedback="feedbacks.length == 0" />
   </div>
 </template>

@@ -1,10 +1,24 @@
+<script setup lang="ts">
+const { category, noFeedback } = defineProps({
+  category: {
+    type: String,
+    default: '',
+  },
+  noFeedback: {
+    type: Boolean,
+    default: false,
+  },
+})
+const titleString = noFeedback ? 'There is no feedback yet' : `No feedback of category "${category}"`
+</script>
+
 <template>
   <div class="bg-white w-full rounded-xl px-6 py-28 flex flex-col items-center text-center">
     <div>
       <img class="w-36" src="../../assets/suggestions/illustration-empty.svg" />
     </div>
     <div class="mt-14 mb-6">
-      <span class="text-2xl font-bold text-gray-600">No feedback of category "UX"</span>
+      <span class="text-2xl font-bold text-gray-600">{{ titleString }}</span>
     </div>
     <div>
       <span
