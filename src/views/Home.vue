@@ -66,10 +66,7 @@ export default defineComponent({
         this.feedbacks,
         [option.key],
       )
-
-      if (option.order === 'asc') return
-
-      this.feedbacks.reverse()
+      option.order === 'asc' && this.feedbacks.reverse()
     },
   },
   computed: {
