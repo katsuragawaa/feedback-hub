@@ -2,15 +2,22 @@
 import SortBySelector from './SortBySelector.vue'
 import AddFeedbackButton from './AddFeedbackButton.vue';
 
+type SortBy = {
+  title: string
+  index: number
+  key: string
+  order: string
+}
+
 const emit = defineEmits<{
-  (e: 'sort', option: string): void;
+  (e: 'sort', option: SortBy): void;
 }>()
 
 const { feedbacksCount } = defineProps<{
   feedbacksCount: number
 }>()
 
-function handleSort(option: string) {
+function handleSort(option: SortBy) {
   emit('sort', option)
 }
 </script>

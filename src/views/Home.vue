@@ -5,6 +5,13 @@ import FeedbackList from '../components/feedback-list/FeedbackList.vue'
 import { defineComponent } from 'vue'
 import _ from 'lodash'
 
+type SortBy = {
+  title: string
+  index: number
+  key: string
+  order: string
+}
+
 type Feedback = {
   id: string
   title: string
@@ -54,21 +61,15 @@ export default defineComponent({
     handleFilterSelection(filter: string) {
       this.selectedFilter = filter
     },
-    handleSort(option: string) {
-      switch (option) {
-        case 'upvotes-desc':
-          this.feedbacks = _.sortBy(this.feedbacks, 'votes').reverse()
-          break;
-        case 'upvotes-asc':
-          this.feedbacks = _.sortBy(this.feedbacks, 'votes')
-          break;
-        case 'comments-desc':
-          this.feedbacks = _.sortBy(this.feedbacks, 'comments').reverse()
-          break;
-        case 'comments-asc':
-          this.feedbacks = _.sortBy(this.feedbacks, 'comments')
-          break;
-      }
+    handleSort(option: SortBy) {
+      this.feedbacks = _.orderBy(
+        this.feedbacks,
+        [option.key],
+      )
+
+      if (option.order === 'asc') return
+
+      this.feedbacks.reverse()
     },
   },
   computed: {

@@ -5,24 +5,25 @@ type SortBy = {
   title: string
   index: number
   key: string
+  order: string
 }
 
 const emit = defineEmits<{
-  (e: 'sort', option: string): void
+  (e: 'sort', option: SortBy): void
 }>()
 
 const sortOptions = [
-  { title: 'Most Upvotes', index: 0, key: 'upvotes-desc' },
-  { title: 'Least Upvotes', index: 1, key: 'upvotes-asc' },
-  { title: 'Most Comments', index: 2, key: 'comments-desc' },
-  { title: 'Least Comments', index: 3, key: 'comments-asc' },
+  { title: 'Most Upvotes', index: 0, key: 'votes', order: 'desc' },
+  { title: 'Least Upvotes', index: 1, key: 'votes', order: 'asc' },
+  { title: 'Most Comments', index: 2, key: 'comments', order: 'desc' },
+  { title: 'Least Comments', index: 3, key: 'comments', order: 'asc' },
 ]
 
 const selectedOption = ref(sortOptions[0])
 const dropdownVisibility = ref(false)
 
 const selectOption = (option: SortBy) => {
-  emit('sort', option.key)
+  emit('sort', option)
   selectedOption.value = option
   dropdownVisibility.value = false
 }
