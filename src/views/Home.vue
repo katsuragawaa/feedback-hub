@@ -1,8 +1,9 @@
 <script lang="ts">
 import MenuCards from '../components/menu-cards/MenuCards.vue'
-import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue';
-import FeedbackList from '../components/feedback-list/FeedbackList.vue';
-import { defineComponent } from 'vue';
+import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue'
+import FeedbackList from '../components/feedback-list/FeedbackList.vue'
+import { defineComponent } from 'vue'
+import _ from 'lodash'
 
 type Feedback = {
   id: string
@@ -11,6 +12,11 @@ type Feedback = {
   type: string
   votes: number
   comments: number
+}
+
+type SortBy = {
+  title: string
+  index: number
 }
 
 const dummyFeedbacks = [
@@ -38,12 +44,12 @@ export default defineComponent({
   components: {
     MenuCards,
     FeedbackToolbar,
-    FeedbackList
+    FeedbackList,
   },
   data() {
     return {
       selectedFilter: '',
-      feedbacks: [] as Feedback[]
+      feedbacks: [] as Feedback[],
     }
   },
   mounted() {
@@ -52,12 +58,28 @@ export default defineComponent({
   methods: {
     handleFilterSelection(filter: string) {
       this.selectedFilter = filter
-    }
+    },
+    handleSort(option: SortBy) {
+      switch (option.index) {
+        case 0:
+          this.feedbacks = _.sortBy(this.feedbacks, 'votes').reverse()
+          break;
+        case 1:
+          this.feedbacks = _.sortBy(this.feedbacks, 'votes')
+          break;
+        case 2:
+          this.feedbacks = _.sortBy(this.feedbacks, 'comments').reverse()
+          break;
+        case 3:
+          this.feedbacks = _.sortBy(this.feedbacks, 'comments')
+          break;
+      }
+    },
   },
   computed: {
     filteredFeedbacks(): Feedback[] {
       const filter = this.selectedFilter || 'All'
-      console.log(filter)
+      console.log(this.feedbacks)
       if (filter === 'All') {
         return this.feedbacks
       }
@@ -72,8 +94,12 @@ export default defineComponent({
     <MenuCards @filterSelected="handleFilterSelection" />
     <div class="h-10 md:hidden"></div>
     <div class="flex flex-col xl:ml-7 w-full">
-      <FeedbackToolbar :feedbacksCount="filteredFeedbacks.length" />
-      <FeedbackList :selectedFilter="selectedFilter" :filteredFeedbacks="filteredFeedbacks" :noFeedback="feedbacks.length === 0" />
+      <FeedbackToolbar :feedbacksCount="filteredFeedbacks.length" @sort="handleSort" />
+      <FeedbackList
+        :selectedFilter="selectedFilter"
+        :filteredFeedbacks="filteredFeedbacks"
+        :noFeedback="feedbacks.length === 0"
+      />
     </div>
   </div>
 </template>

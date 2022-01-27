@@ -2,9 +2,24 @@
 import SortBySelector from './SortBySelector.vue'
 import AddFeedbackButton from './AddFeedbackButton.vue';
 
+type SortBy = {
+  title: string;
+  index: number;
+}
+
+const emit = defineEmits<{
+  (e: 'sort', option: SortBy): void;
+}>()
+
 const { feedbacksCount } = defineProps<{
   feedbacksCount: number
 }>()
+
+function handleSort(option: SortBy) {
+  emit('sort', option)
+}
+
+
 
 </script>
 
@@ -15,7 +30,7 @@ const { feedbacksCount } = defineProps<{
     <div class="flex items-center">
       <img class="w-7 h-7 md:hidden" src="../../assets/suggestions/icon-suggestions.svg" />
       <span class="font-bold text-lg px-6 md:hidden">{{ feedbacksCount }} Suggestions</span>
-      <SortBySelector />
+      <SortBySelector @sort="handleSort" />
     </div>
     <AddFeedbackButton />
   </div>
