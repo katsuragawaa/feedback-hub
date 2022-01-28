@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SortBySelector from './SortBySelector.vue'
-import AddFeedbackButton from './AddFeedbackButton.vue';
+import AddFeedbackButton from '../shared/AddFeedbackButton.vue';
 
 type SortBy = {
   title: string
