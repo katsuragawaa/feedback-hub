@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AddFeedbackButton from '../shared/AddFeedbackButton.vue';
 const { selectedFilter, noFeedback } = defineProps({
   selectedFilter: {
     type: String,
@@ -22,10 +23,11 @@ const { selectedFilter, noFeedback } = defineProps({
         <span v-else>No feedback of category "{{ selectedFilter }}"</span>
       </div>
     </div>
-    <div>
+    <div class="mb-12">
       <span
         class="text-gray-500 text-sm sm:text-base"
       >Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.</span>
     </div>
+    <AddFeedbackButton />
   </div>
 </template>
