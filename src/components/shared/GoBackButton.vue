@@ -1,30 +1,25 @@
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import router from '../../router';
 
-export default defineComponent({
-  name: 'GoBackButton',
-  props: {
-    textColor: {
-      type: String,
-      default: 'white',
-    },
-    iconColor: {
-      type: String,
-      default: '#fff',
-    },
+const { textColor, iconColor } = defineProps({
+  textColor: {
+    type: String,
+    default: 'white',
   },
-  methods: {
-    goBack() {
-      router.back();
-    },
-  },
-  computed: {
-    textClass() {
-      return `text-${this.textColor} font-bold ml-3 text-xs sm:text-sm`;
-    },
+  iconColor: {
+    type: String,
+    default: '#fff',
   },
 });
+
+const textClass = computed(() => {
+  return `text-${textColor} font-bold ml-3 text-xs sm:text-sm`;
+});
+
+function goBack() {
+  router.back();
+}
 </script>
 
 <template>
