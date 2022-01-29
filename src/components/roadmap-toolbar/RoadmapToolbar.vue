@@ -9,7 +9,7 @@ import GoBackButton from '../shared/GoBackButton.vue';
   >
     <div class="flex flex-col">
       <GoBackButton />
-      <div>Roadmap</div>
+      <div class="text-2xl md:text-base font-bold mt-2">Roadmap</div>
     </div>
     <AddFeedbackButton />
   </div>
