@@ -3,5 +3,5 @@ import FeedbackForm from '../components/feedback-form/FeedbackForm.vue';
 </script>
 
 <template>
-  <feedback-form />
+  <FeedbackForm title="Create a feedback" />
 </template>
