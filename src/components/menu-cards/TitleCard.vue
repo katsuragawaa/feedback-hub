@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 function handleWindowResize() {
-  sidebarOn.value = false
-  emit('close')
+  sidebarOn.value = false;
+  emit('close');
 }
 
 onMounted(() => {
-  window.addEventListener('resize', handleWindowResize)
-})
+  window.addEventListener('resize', handleWindowResize);
+});
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', handleWindowResize)
-})
+  window.removeEventListener('resize', handleWindowResize);
+});
 
 const emit = defineEmits<{
-  (e: 'open'): void
-  (e: 'close'): void
-}>()
+  (e: 'open'): void;
+  (e: 'close'): void;
+}>();
 
-const sidebarOn = ref(false)
+const sidebarOn = ref(false);
 const toggleSidebar = () => {
-  sidebarOn.value = !sidebarOn.value
-  sidebarOn.value ? emit('open') : emit('close')
-}
+  sidebarOn.value = !sidebarOn.value;
+  sidebarOn.value ? emit('open') : emit('close');
+};
 </script>
 
 <template>
@@ -42,7 +42,11 @@ const toggleSidebar = () => {
           class="absolute h-full"
           src="../../assets/shared/mobile/icon-close.svg"
         />
-        <img v-else class="absolute h-full" src="../../assets/shared/mobile/icon-hamburger.svg" />
+        <img
+          v-else
+          class="absolute h-full"
+          src="../../assets/shared/mobile/icon-hamburger.svg"
+        />
       </transition>
     </div>
   </div>

@@ -1,7 +1,14 @@
 <template>
   <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <radialGradient cx="103.9%" cy="-10.387%" fx="103.9%" fy="-10.387%" r="166.816%" id="a">
+      <radialGradient
+        cx="103.9%"
+        cy="-10.387%"
+        fx="103.9%"
+        fy="-10.387%"
+        r="166.816%"
+        id="a"
+      >
         <stop stop-color="#E84D70" offset="0%" />
         <stop stop-color="#A337F6" offset="53.089%" />
         <stop stop-color="#28A7ED" offset="100%" />

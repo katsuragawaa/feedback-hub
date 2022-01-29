@@ -1,25 +1,25 @@
 <script lang="ts">
-import MenuCards from '../components/menu-cards/MenuCards.vue'
-import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue'
-import FeedbackList from '../components/feedback-list/FeedbackList.vue'
-import { defineComponent } from 'vue'
-import _ from 'lodash'
+import MenuCards from '../components/menu-cards/MenuCards.vue';
+import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue';
+import FeedbackList from '../components/feedback-list/FeedbackList.vue';
+import { defineComponent } from 'vue';
+import _ from 'lodash';
 
 type SortBy = {
-  title: string
-  index: number
-  key: string
-  order: string
-}
+  title: string;
+  index: number;
+  key: string;
+  order: string;
+};
 
 type Feedback = {
-  id: string
-  title: string
-  description: string
-  type: string
-  votes: number
-  comments: number
-}
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  votes: number;
+  comments: number;
+};
 
 const dummyFeedbacks = [
   {
@@ -39,7 +39,7 @@ const dummyFeedbacks = [
     votes: 23,
     comments: 13,
   },
-]
+];
 
 export default defineComponent({
   name: 'Home',
@@ -52,38 +52,43 @@ export default defineComponent({
     return {
       selectedFilter: '',
       feedbacks: [] as Feedback[],
-    }
+    };
   },
   mounted() {
-    this.feedbacks = dummyFeedbacks
+    this.feedbacks = dummyFeedbacks;
   },
   methods: {
     handleFilterSelection(filter: string) {
-      this.selectedFilter = filter
+      this.selectedFilter = filter;
     },
     handleSort(option: SortBy) {
-      const order = option.order === 'asc' ? 'asc' : 'desc' // TS won't let me just use option.order
-      this.feedbacks = _.orderBy(this.feedbacks, [option.key], [order])
+      const order = option.order === 'asc' ? 'asc' : 'desc'; // TS won't let me just use option.order
+      this.feedbacks = _.orderBy(this.feedbacks, [option.key], [order]);
     },
   },
   computed: {
     filteredFeedbacks(): Feedback[] {
-      const filter = this.selectedFilter || 'All'
+      const filter = this.selectedFilter || 'All';
       if (filter === 'All') {
-        return this.feedbacks
+        return this.feedbacks;
       }
-      return this.feedbacks.filter((feedback) => feedback.type === filter)
+      return this.feedbacks.filter((feedback) => feedback.type === filter);
     },
   },
-})
+});
 </script>
 
 <template>
-  <div class="px-10 xl:px-36 py-14 md:p-0 min-h-screen bg-zinc-200 flex flex-col xl:flex-row">
+  <div
+    class="px-10 xl:px-36 py-14 md:p-0 min-h-screen bg-zinc-200 flex flex-col xl:flex-row"
+  >
     <MenuCards @filterSelected="handleFilterSelection" />
     <div class="h-10 md:hidden"></div>
     <div class="flex flex-col xl:ml-7 w-full">
-      <FeedbackToolbar :feedbacksCount="filteredFeedbacks.length" @sort="handleSort" />
+      <FeedbackToolbar
+        :feedbacksCount="filteredFeedbacks.length"
+        @sort="handleSort"
+      />
       <FeedbackList
         :selectedFilter="selectedFilter"
         :filteredFeedbacks="filteredFeedbacks"

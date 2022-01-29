@@ -3,25 +3,25 @@ import { ref } from 'vue';
 
 const { feedback } = defineProps<{
   feedback: {
-    id: string,
-    title: string,
-    description: string,
-    type: string,
-    votes: number,
-    comments: number,
-  },
-}>()
+    id: string;
+    title: string;
+    description: string;
+    type: string;
+    votes: number;
+    comments: number;
+  };
+}>();
 
-const voted = ref(false)
+const voted = ref(false);
 const vote = () => {
-  voted.value = !voted.value
+  voted.value = !voted.value;
 
   if (voted.value) {
-    feedback.votes++
+    feedback.votes++;
   } else {
-    feedback.votes--
+    feedback.votes--;
   }
-}
+};
 </script>
 
 <template>
@@ -49,15 +49,23 @@ const vote = () => {
         </svg>
         <div class="font-bold text-sm md:ml-3">{{ feedback.votes }}</div>
       </div>
-      <div class="flex flex-col mx-10 cursor-pointer hover:text-blue-600 duration-300 md:m-0">
+      <div
+        class="flex flex-col mx-10 cursor-pointer hover:text-blue-600 duration-300 md:m-0"
+      >
         <div class="font-bold sm:text-lg text-base">{{ feedback.title }}</div>
-        <div class="text-gray-500 mt-2 mb-4 sm:text-base text-sm">{{ feedback.description }}</div>
+        <div class="text-gray-500 mt-2 mb-4 sm:text-base text-sm">
+          {{ feedback.description }}
+        </div>
         <div
           class="rounded-lg py-2 px-6 w-fit bg-blue-600 font-medium text-sm text-blue-700 bg-opacity-20"
-        >{{ feedback.type }}</div>
+        >
+          {{ feedback.type }}
+        </div>
       </div>
     </div>
-    <div class="flex items-center justify-center md:absolute md:right-8 md:bottom-8">
+    <div
+      class="flex items-center justify-center md:absolute md:right-8 md:bottom-8"
+    >
       <div class="min-w-max">
         <img class="w-5" src="../../assets/shared/icon-comments.svg" />
       </div>

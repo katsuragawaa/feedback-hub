@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import FeedbackForm from '../components/feedback-form/FeedbackForm.vue';
+</script>
+
 <template>
-  <div>New Feedback</div>
+  <feedback-form />
 </template>

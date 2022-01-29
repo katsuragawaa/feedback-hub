@@ -1,16 +1,16 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
-import FeedbackCard from './FeedbackCard.vue'
-import FeedbackEmpty from './FeedbackEmpty.vue'
+import { defineComponent, PropType } from 'vue';
+import FeedbackCard from './FeedbackCard.vue';
+import FeedbackEmpty from './FeedbackEmpty.vue';
 
 type Feedback = {
-  id: string
-  title: string
-  description: string
-  type: string
-  votes: number
-  comments: number
-}
+  id: string;
+  title: string;
+  description: string;
+  type: string;
+  votes: number;
+  comments: number;
+};
 
 export default defineComponent({
   name: 'FeedbackList',
@@ -29,10 +29,10 @@ export default defineComponent({
     },
     noFeedback: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
-})
+});
 </script>
 
 <template>
@@ -45,7 +45,11 @@ export default defineComponent({
         class="transition duration-500"
       />
     </transition-group>
-    <FeedbackEmpty v-else :selectedFilter="selectedFilter" :noFeedback="noFeedback" />
+    <FeedbackEmpty
+      v-else
+      :selectedFilter="selectedFilter"
+      :noFeedback="noFeedback"
+    />
   </div>
 </template>
 

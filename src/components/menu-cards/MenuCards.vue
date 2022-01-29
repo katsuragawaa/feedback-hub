@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import TitleCard from './TitleCard.vue'
-import FiltersCard from './FiltersCard.vue'
-import RoadmapCard from './RoadmapCard.vue'
-import { ref } from 'vue'
+import TitleCard from './TitleCard.vue';
+import FiltersCard from './FiltersCard.vue';
+import RoadmapCard from './RoadmapCard.vue';
+import { ref } from 'vue';
 
-const sidebarOn = ref(false)
+const sidebarOn = ref(false);
 
 const open = () => {
-  sidebarOn.value = true
-}
+  sidebarOn.value = true;
+};
 const close = () => {
-  sidebarOn.value = false
-}
+  sidebarOn.value = false;
+};
 
 function handleFilterSelection(filter: string) {
-  emit('filterSelected', filter)
+  emit('filterSelected', filter);
 }
 
 const emit = defineEmits<{
-  (e: 'filterSelected', filter: string): void
-}>()
+  (e: 'filterSelected', filter: string): void;
+}>();
 </script>
 
 <template>
@@ -40,7 +40,6 @@ const emit = defineEmits<{
     </div>
   </transition>
 </template>
-
 
 <style scoped>
 .slide-enter-active,

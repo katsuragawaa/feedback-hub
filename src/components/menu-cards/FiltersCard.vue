@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 const filters = {
   0: 'All',
@@ -8,17 +8,17 @@ const filters = {
   3: 'Enhancement',
   4: 'Bug',
   5: 'Feature',
-}
-const selectedFilter = ref('All')
+};
+const selectedFilter = ref('All');
 
 const selectFilter = (filter: string) => {
-  emit('filterSelected', filter)
-  selectedFilter.value = filter
-}
+  emit('filterSelected', filter);
+  selectedFilter.value = filter;
+};
 
 const emit = defineEmits<{
-  (e: 'filterSelected', filter: string): void
-}>()
+  (e: 'filterSelected', filter: string): void;
+}>();
 </script>
 
 <template>
@@ -35,7 +35,9 @@ const emit = defineEmits<{
             : 'text-blue-700  bg-opacity-20'
         "
         class="flex-1 rounded-lg py-2 px-4 lg:px-6 mr-2 mb-3 w-fit bg-blue-600 font-medium text-center text-xs sm:text-sm hover:bg-opacity-40 duration-500 cursor-pointer"
-      >{{ filter }}</div>
+      >
+        {{ filter }}
+      </div>
     </div>
   </div>
 </template>
