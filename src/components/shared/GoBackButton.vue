@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
+import router from "../../router";
 
 export default defineComponent({
   name: 'GoBackButton',
@@ -13,6 +14,11 @@ export default defineComponent({
       default: '#fff'
     }
   },
+  methods: {
+    goBack() {
+      router.back()
+    },
+  },
   computed: {
     textClass() {
       return `text-${this.textColor} font-bold ml-3 text-xs sm:text-sm`
@@ -22,7 +28,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex items-center cursor-pointer">
+  <div class="flex items-center cursor-pointer" @click="goBack">
     <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
       <path d="M6 9L2 5l4-4" :stroke="iconColor" stroke-width="2" fill="none" fill-rule="evenodd" />
     </svg>
