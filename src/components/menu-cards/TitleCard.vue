@@ -36,7 +36,7 @@ const toggleSidebar = () => {
       <div class="text-sm text-neutral-100">Give us your insight</div>
     </div>
     <div class="h-5 w-5 relative hidden md:block" @click="toggleSidebar">
-      <transition name="no-mode-fade">
+      <transition name="fade">
         <img
           v-if="sidebarOn"
           class="absolute h-full"
@@ -49,12 +49,12 @@ const toggleSidebar = () => {
 </template>
 
 <style scoped>
-.no-mode-fade-enter-active {
+.fade-enter-active {
   transition: opacity 0.5s;
 }
 
-.no-mode-fade-enter-from,
-.no-mode-fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>

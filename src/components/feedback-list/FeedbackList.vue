@@ -36,13 +36,39 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="mt-6 md:mt-0 md:mx-6">
-    <FeedbackCard
-      v-if="filteredFeedbacks.length"
-      v-for="feedback in filteredFeedbacks"
-      :key="feedback.id"
-      :feedback="feedback"
-    />
-    <FeedbackEmpty v-else :selectedFilter="selectedFilter" :noFeedback="noFeedback" />
-  </div>
+  <transition name="fade">
+    <div class="mt-6 transition md:mt-0 md:mx-6" v-if="filteredFeedbacks.length">
+      <transition-group name="list-slide">
+        <FeedbackCard
+          v-for="feedback in filteredFeedbacks"
+          :key="feedback.id"
+          :feedback="feedback"
+          class="transition duration-500"
+        />
+      </transition-group>
+    </div>
+    <div v-else class="mt-6 transition md:mt-0 md:mx-6">
+      <FeedbackEmpty :selectedFilter="selectedFilter" :noFeedback="noFeedback" />
+    </div>
+  </transition>
 </template>
+
+<style scoped>
+.list-slide-enter-from,
+.list-slide-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.list-slide-leave-active {
+  position: absolute;
+}
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
