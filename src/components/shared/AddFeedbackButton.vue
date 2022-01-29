@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'NewFeedback' }">
+  <router-link :to="{ name: 'NewFeedbackForm' }">
     <button
       class="bg-purple-600 text-white sm:text-sm text-xs py-3 px-6 rounded-lg hover:brightness-125 duration-300"
     >

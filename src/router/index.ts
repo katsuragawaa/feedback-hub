@@ -2,7 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Roadmap from '../views/Roadmap.vue';
 import Feedback from '../views/Feedback.vue';
-import NewFeedback from '../views/NewFeedback.vue';
+import NewFeedbackForm from '../views/NewFeedbackForm.vue';
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'Home', component: Home },
@@ -12,7 +12,9 @@ const routes: RouteRecordRaw[] = [
     name: 'Feedback',
     component: Feedback,
     redirect: '/',
-    children: [{ path: 'new', name: 'NewFeedback', component: NewFeedback }],
+    children: [
+      { path: 'new', name: 'NewFeedbackForm', component: NewFeedbackForm },
+    ],
   },
 ];
 
