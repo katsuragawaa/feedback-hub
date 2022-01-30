@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import GoBackButton from '../shared/GoBackButton.vue';
 import DropdownSelector from './DropdownSelector.vue';
+import { v4 as uuidv4 } from 'uuid';
 import { computed, ref } from 'vue';
 import router from '../../router';
 
 type FeedbackFormData = {
+  id: string;
   title: string;
   category: string;
   status: string;
@@ -49,6 +51,7 @@ function goBack() {
 
 function saveFeedback() {
   const feedback = {
+    id: uuidv4(), // TODO: don't change if is a edit
     title: removeEmptySpaces(feedbackTitle.value),
     category: category.value,
     status: status.value,
