@@ -12,10 +12,15 @@ const { title } = defineProps({
 
 const feedbackTitle = ref('');
 const category = ref('Feature');
+const status = ref('Suggestion');
 const feedbackDetails = ref('');
 
 function handleCategorySelection(selectedCategory: string) {
   category.value = selectedCategory;
+}
+
+function handleStatusUpdate(selectedStatus: string) {
+  status.value = selectedStatus;
 }
 </script>
 
@@ -55,7 +60,7 @@ function handleCategorySelection(selectedCategory: string) {
             </div>
             <DropdownSelector
               :items="['Feature', 'UI', 'UX', 'Enhancement', 'Bug']"
-              :preSelectedItem="'Feature'"
+              :preSelectedItem="category"
               @itemSelected="handleCategorySelection"
             />
           </div>
@@ -65,8 +70,8 @@ function handleCategorySelection(selectedCategory: string) {
             <div class="text-gray-600 mt-2">Change feature state</div>
             <DropdownSelector
               :items="['Suggestion', 'Planned', 'In-progress', 'Live']"
-              :preSelectedItem="'Suggestion'"
-              @itemSelected="handleCategorySelection"
+              :preSelectedItem="status"
+              @itemSelected="handleStatusUpdate"
             />
           </div>
 
