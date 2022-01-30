@@ -10,8 +10,7 @@ type FeedbackFormData = {
 };
 
 function writeFeedbackData(feedback: FeedbackFormData) {
-  const db = database;
-  set(ref(db, 'feedback/' + feedback.id), feedback);
+  set(ref(database, 'feedback/' + feedback.id), feedback);
 }
 
 export { writeFeedbackData };
