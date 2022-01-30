@@ -20,30 +20,8 @@ type Feedback = {
   category: string;
   status: string;
   votes: number;
-  comments: number;
+  comments: string[];
 };
-
-const dummyFeedbacks = [
-  {
-    id: '1',
-    title: 'More comprehensive reports',
-    details:
-      'It would be great to see a more detailed breakdown of solutions.',
-    category: 'Enhancement',
-    status: 'Suggestions',
-    votes: 123,
-    comments: 4,
-  },
-  {
-    id: '2',
-    title: 'Add tags for solutions',
-    details: 'Easier to search for solutions based on a specific stack.',
-    category: 'Feature',
-    status: 'Suggestions',
-    votes: 23,
-    comments: 13,
-  },
-];
 
 export default defineComponent({
   name: 'Home',
