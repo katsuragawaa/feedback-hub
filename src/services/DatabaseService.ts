@@ -1,5 +1,5 @@
 import database from '../firebase';
-import { ref, set } from 'firebase/database';
+import { ref, set, get, child } from 'firebase/database';
 
 type FeedbackFormData = {
   id: string;
@@ -9,8 +9,23 @@ type FeedbackFormData = {
   details: string;
 };
 
+function readFeedbackData(id: string) {
+  const dbRef = ref(database);
+  get(child(dbRef, `feedbacks/${id}`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log('No data available');
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 function writeFeedbackData(feedback: FeedbackFormData) {
-  set(ref(database, 'feedback/' + feedback.id), feedback);
+  set(ref(database, 'feedbacks/' + feedback.id), feedback);
 }
 
 export { writeFeedbackData };
