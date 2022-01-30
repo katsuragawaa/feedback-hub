@@ -64,7 +64,7 @@ const selectOption = (option: SortBy) => {
       <transition name="list">
         <div
           v-show="dropdownVisibility"
-          class="absolute left-0 w-52 mt-2 origin-top-right bg-white rounded-md shadow-lg"
+          class="absolute left-0 w-52 mt-2 origin-top-right bg-white rounded-md shadow-xl z-10"
           role="menu"
         >
           <div class="py-1">
