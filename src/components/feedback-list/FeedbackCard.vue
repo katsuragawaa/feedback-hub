@@ -8,7 +8,7 @@ const { feedback } = defineProps<{
     details: string;
     category: string;
     votes: number;
-    comments: number;
+    comments: string[]; // TODO
   };
 }>();
 
@@ -70,7 +70,7 @@ const vote = () => {
       <div class="min-w-max">
         <img class="w-5" src="../../assets/shared/icon-comments.svg" />
       </div>
-      <div class="font-bold text-lg ml-3">{{ feedback.comments }}</div>
+      <div class="font-bold text-lg ml-3">{{ feedback.comments.length }}</div>
     </div>
   </div>
 </template>

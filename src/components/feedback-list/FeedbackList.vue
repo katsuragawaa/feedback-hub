@@ -10,7 +10,7 @@ type Feedback = {
   category: string;
   status: string;
   votes: number;
-  comments: number;
+  comments: string[]; // TODO
 };
 
 export default defineComponent({

@@ -11,7 +11,7 @@ type FeedbackFormData = {
   status: string;
   details: string;
   votes?: number;
-  comments?: []; // TODO: setup comments type
+  comments?: string[]; // TODO: setup comments type
 };
 
 const loading = ref(false);
