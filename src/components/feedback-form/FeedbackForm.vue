@@ -143,7 +143,7 @@ function saveFeedback() {
               :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
               @click="saveFeedback"
             >
-              <span v-if="loading">
+              <span v-if="loading" class="text-white">
                 <Spinner :size="5" />
               </span>
               <span v-else>Add Feedback</span>
