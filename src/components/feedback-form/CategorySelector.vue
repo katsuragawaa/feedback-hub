@@ -10,14 +10,14 @@ const categories = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
 const selectedCategory = ref(category);
 const dropdownVisibility = ref(false);
 
-const selectItem = (item: string) => {
-  emit('itemSelected', item);
+const selectCategory = (item: string) => {
+  emit('categorySelected', item);
   selectedCategory.value = item;
   dropdownVisibility.value = false;
 };
 
 const emit = defineEmits<{
-  (e: 'itemSelected', item: string): void;
+  (e: 'categorySelected', item: string): void;
 }>();
 </script>
 
@@ -82,7 +82,7 @@ const emit = defineEmits<{
               :tabindex="index"
               class="text-gray-600 flex items-center justify-between w-full px-6 py-3 leading-5 cursor-pointer hover:text-purple-700"
               role="menuitem"
-              @click="selectItem(category)"
+              @click="selectCategory(category)"
             >
               <span>{{ category }}</span>
               <span v-if="category === selectedCategory">
