@@ -36,11 +36,14 @@ export default defineComponent({
     return {
       selectedFilter: '',
       feedbacks: [] as Feedback[],
+      loading: false,
     };
   },
   async mounted() {
+    this.loading = true;
     const fetchedFeedbacksObject = await readAllFeedbackData();
     this.feedbacks = Object.values(fetchedFeedbacksObject);
+    this.loading = false;
   },
   methods: {
     handleFilterSelection(filter: string) {
@@ -69,18 +72,18 @@ export default defineComponent({
   >
     <MenuCards @filterSelected="handleFilterSelection" />
     <div class="h-10 md:hidden"></div>
-    <div class="flex flex-col xl:ml-7 w-full items-center">
+    <div class="flex flex-col xl:ml-7 w-full">
       <FeedbackToolbar
         :feedbacksCount="filteredFeedbacks.length"
         @sort="handleSort"
       />
       <FeedbackList
-        v-if="false"
+        v-if="!loading"
         :selectedFilter="selectedFilter"
         :filteredFeedbacks="filteredFeedbacks"
         :noFeedback="feedbacks.length === 0"
       />
-      <div v-else class="w-28 m-96 md:m-24 text-purple-700">
+      <div v-else class="w-28 m-96 md:m-24 text-purple-700 mx-auto">
         <Spinner :size="28" />
       </div>
     </div>
