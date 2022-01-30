@@ -115,7 +115,7 @@ function addFeedback() {
             />
           </div>
 
-          <div class="flex justify-end mt-12">
+          <div class="flex justify-end mt-12 mb-4">
             <button
               class="py-3 px-6 rounded-lg hover:bg-gray-200 hover:text-black duration-500"
               @click="goBack"
