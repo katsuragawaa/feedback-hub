@@ -11,6 +11,7 @@ type FeedbackFormData = {
   status: string;
   details: string;
   votes?: number;
+  comments?: []; // TODO: setup comments type
 };
 
 const loading = ref(false);
@@ -19,7 +20,7 @@ function saveFeedback(feedback: FeedbackFormData) {
   loading.value = true;
 
   setTimeout(() => {
-    writeFeedbackData({ ...feedback, votes: 0 });
+    writeFeedbackData({ ...feedback, votes: 0, comments: [] });
     loading.value = false;
     router.push({ name: 'Home' });
   }, 2000);
