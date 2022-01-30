@@ -4,6 +4,7 @@ import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue'
 import FeedbackList from '../components/feedback-list/FeedbackList.vue';
 import { defineComponent } from 'vue';
 import _ from 'lodash';
+import { readAllFeedbackData } from '../services/DatabaseService';
 
 type SortBy = {
   title: string;
@@ -55,6 +56,7 @@ export default defineComponent({
     };
   },
   mounted() {
+    readAllFeedbackData();
     this.feedbacks = dummyFeedbacks;
   },
   methods: {
