@@ -83,73 +83,75 @@ function saveFeedback() {
         </div>
         <h1 class="text-xl mt-6 font-bold">{{ title }}</h1>
 
-        <div class="md:text-sm">
-          <div class="mt-16">
-            <div class="font-bold">Feedback Title: {{ feedbackTitle }}</div>
-            <div class="text-gray-600 mt-2">
-              Add a short, descriptive headline
+        <form @submit.prevent="saveFeedback">
+          <div class="md:text-sm">
+            <div class="mt-16">
+              <div class="font-bold">Feedback Title: {{ feedbackTitle }}</div>
+              <div class="text-gray-600 mt-2">
+                Add a short, descriptive headline
+              </div>
+              <input
+                v-model="feedbackTitle"
+                class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+              />
             </div>
-            <input
-              v-model="feedbackTitle"
-              class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
-            />
-          </div>
 
-          <div class="mt-12">
-            <div class="font-bold">Category</div>
-            <div class="text-gray-600 mt-2">
-              Choose a category for your feedback
+            <div class="mt-12">
+              <div class="font-bold">Category</div>
+              <div class="text-gray-600 mt-2">
+                Choose a category for your feedback
+              </div>
+              <DropdownSelector
+                :items="['Feature', 'UI', 'UX', 'Enhancement', 'Bug']"
+                :preSelectedItem="category"
+                @itemSelected="handleCategorySelection"
+              />
             </div>
-            <DropdownSelector
-              :items="['Feature', 'UI', 'UX', 'Enhancement', 'Bug']"
-              :preSelectedItem="category"
-              @itemSelected="handleCategorySelection"
-            />
-          </div>
 
-          <div v-if="isEdit" class="mt-12">
-            <div class="font-bold">Update Status</div>
-            <div class="text-gray-600 mt-2">Change feature state</div>
-            <DropdownSelector
-              :items="['Suggestion', 'Planned', 'In-progress', 'Live']"
-              :preSelectedItem="status"
-              @itemSelected="handleStatusUpdate"
-            />
-          </div>
-
-          <div class="mt-12">
-            <div class="font-bold">Feedback Detail</div>
-            <div class="text-gray-600 mt-2">
-              Include any specific comments on what should be improved, added,
-              etc.
+            <div v-if="isEdit" class="mt-12">
+              <div class="font-bold">Update Status</div>
+              <div class="text-gray-600 mt-2">Change feature state</div>
+              <DropdownSelector
+                :items="['Suggestion', 'Planned', 'In-progress', 'Live']"
+                :preSelectedItem="status"
+                @itemSelected="handleStatusUpdate"
+              />
             </div>
-            <textarea
-              maxlength="500"
-              v-model="feedbackDetails"
-              class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
-            />
-          </div>
 
-          <div class="flex justify-end mt-12 mb-4 md:flex-col">
-            <button
-              class="py-3 px-6 rounded-lg hover:bg-gray-200 hover:text-black duration-500"
-              @click="goBack"
-            >
-              Cancel
-            </button>
-            <div class="w-4"></div>
-            <button
-              class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:brightness-125 duration-500 flex justify-center"
-              :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
-              @click="saveFeedback"
-            >
-              <span v-if="loading" class="text-white">
-                <Spinner :size="5" />
-              </span>
-              <span v-else>Add Feedback</span>
-            </button>
+            <div class="mt-12">
+              <div class="font-bold">Feedback Detail</div>
+              <div class="text-gray-600 mt-2">
+                Include any specific comments on what should be improved, added,
+                etc.
+              </div>
+              <textarea
+                maxlength="500"
+                v-model="feedbackDetails"
+                class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+              />
+            </div>
+
+            <div class="flex justify-end mt-12 mb-4 md:flex-col">
+              <div
+                class="py-3 px-6 rounded-lg hover:bg-gray-200 hover:text-black duration-500 text-center md:mb-4"
+                @click="goBack"
+              >
+                Cancel
+              </div>
+              <div class="w-4"></div>
+              <button
+                class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:brightness-125 duration-500 flex justify-center"
+                :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
+                type="submit"
+              >
+                <span v-if="loading" class="text-white">
+                  <Spinner :size="5" />
+                </span>
+                <span v-else>Add Feedback</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>
