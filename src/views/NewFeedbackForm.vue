@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { writeFeedbackData } from '../services/DatabaseService';
 import FeedbackForm from '../components/feedback-form/FeedbackForm.vue';
 
 type FeedbackFormData = {
+  id: string;
   title: string;
   category: string;
   status: string;
@@ -9,7 +11,7 @@ type FeedbackFormData = {
 };
 
 function saveFeedback(feedback: FeedbackFormData) {
-  console.log(feedback);
+  writeFeedbackData(feedback);
 }
 </script>
 
