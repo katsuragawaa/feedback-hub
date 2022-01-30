@@ -62,6 +62,7 @@ function handleCategorySelection(selectedCategory: string) {
               etc.
             </div>
             <textarea
+              maxlength="500"
               v-model="feedbackDetails"
               class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
             />
