@@ -3,12 +3,10 @@ import GoBackButton from '../shared/GoBackButton.vue';
 import DropdownSelector from './DropdownSelector.vue';
 import { ref } from 'vue';
 
-const { title } = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-});
+const { title, isEdit } = defineProps<{
+  title: string;
+  isEdit?: boolean;
+}>();
 
 const feedbackTitle = ref('');
 const category = ref('Feature');
@@ -65,7 +63,7 @@ function handleStatusUpdate(selectedStatus: string) {
             />
           </div>
 
-          <div class="mt-12">
+          <div v-if="isEdit" class="mt-12">
             <div class="font-bold">Update Status</div>
             <div class="text-gray-600 mt-2">Change feature state</div>
             <DropdownSelector
