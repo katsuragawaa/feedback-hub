@@ -4,6 +4,7 @@ import DropdownSelector from './DropdownSelector.vue';
 import { v4 as uuidv4 } from 'uuid';
 import { computed, ref } from 'vue';
 import router from '../../router';
+import Spinner from '../shared/Spinner.vue';
 
 type FeedbackFormData = {
   id: string;
@@ -142,7 +143,9 @@ function saveFeedback() {
               :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
               @click="saveFeedback"
             >
-              <span v-if="loading">Saving</span>
+              <span v-if="loading">
+                <Spinner :size="5" />
+              </span>
               <span v-else>Add Feedback</span>
             </button>
           </div>
