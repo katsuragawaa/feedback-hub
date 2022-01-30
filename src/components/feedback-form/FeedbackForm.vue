@@ -28,6 +28,7 @@ const feedbackTitle = ref('');
 const category = ref('Feature');
 const status = ref('Suggestion');
 const feedbackDetails = ref('');
+const submitted = ref(false);
 
 const disableAddButton = computed(() => {
   const cleanTitle = removeEmptySpaces(feedbackTitle.value);
@@ -52,7 +53,8 @@ function goBack() {
 }
 
 function saveFeedback() {
-  if (disableAddButton.value || loading) return;
+  if (disableAddButton.value || loading || submitted.value) return;
+  submitted.value = true; // Avoid multiple submissions
 
   const feedback = {
     id: uuidv4(), // TODO: don't change if is a edit
