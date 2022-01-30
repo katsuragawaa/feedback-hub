@@ -20,7 +20,11 @@ function saveFeedback(feedback: FeedbackFormData) {
   loading.value = true;
 
   setTimeout(() => {
-    writeFeedbackData({ ...feedback, votes: 0, comments: [] });
+    writeFeedbackData({
+      ...feedback,
+      votes: 0,
+      comments: ['Comment 1', 'Comment 2'],
+    });
     loading.value = false;
     router.push({ name: 'Home' });
   }, 2000);
