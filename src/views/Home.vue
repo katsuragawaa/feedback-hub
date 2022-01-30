@@ -5,6 +5,7 @@ import FeedbackList from '../components/feedback-list/FeedbackList.vue';
 import { defineComponent } from 'vue';
 import _ from 'lodash';
 import { readAllFeedbackData } from '../services/DatabaseService';
+import Spinner from '../components/shared/Spinner.vue';
 
 type SortBy = {
   title: string;
@@ -29,6 +30,7 @@ export default defineComponent({
     MenuCards,
     FeedbackToolbar,
     FeedbackList,
+    Spinner,
   },
   data() {
     return {
@@ -67,16 +69,20 @@ export default defineComponent({
   >
     <MenuCards @filterSelected="handleFilterSelection" />
     <div class="h-10 md:hidden"></div>
-    <div class="flex flex-col xl:ml-7 w-full">
+    <div class="flex flex-col xl:ml-7 w-full items-center">
       <FeedbackToolbar
         :feedbacksCount="filteredFeedbacks.length"
         @sort="handleSort"
       />
       <FeedbackList
+        v-if="false"
         :selectedFilter="selectedFilter"
         :filteredFeedbacks="filteredFeedbacks"
         :noFeedback="feedbacks.length === 0"
       />
+      <div v-else class="w-28 m-96 md:m-24 text-purple-700">
+        <Spinner :size="28" />
+      </div>
     </div>
   </div>
 </template>
