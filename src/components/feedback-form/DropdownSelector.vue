@@ -1,23 +1,21 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const { category } = defineProps<{
-  category: string;
+const { items } = defineProps<{
+  items: string[];
 }>();
 
-const categories = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
-
-const selectedCategory = ref(category);
+const selectedItem = ref(items[0]);
 const dropdownVisibility = ref(false);
 
-const selectCategory = (item: string) => {
-  emit('categorySelected', item);
-  selectedCategory.value = item;
+const selectItem = (item: string) => {
+  emit('itemSelected', item);
+  selectedItem.value = item;
   dropdownVisibility.value = false;
 };
 
 const emit = defineEmits<{
-  (e: 'categorySelected', item: string): void;
+  (e: 'itemSelected', item: string): void;
 }>();
 </script>
 
@@ -36,14 +34,12 @@ const emit = defineEmits<{
   -->
 
   <div class="flex flex-col">
-    <div class="font-bold">Category</div>
-    <div class="text-gray-600 mt-2">Choose a category for your feedback</div>
     <div class="relative">
       <div
         class="flex justify-between w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md cursor-pointer relative"
         @click="dropdownVisibility = !dropdownVisibility"
       >
-        <span>{{ selectedCategory }}</span>
+        <span>{{ selectedItem }}</span>
         <div
           class="inline-flex items-center transition duration-150 ease-in-out"
           type="button"
@@ -77,15 +73,15 @@ const emit = defineEmits<{
         >
           <div class="py-1">
             <div
-              v-for="(category, index) in categories"
+              v-for="(item, index) in items"
               :key="index"
               :tabindex="index"
               class="text-gray-600 flex items-center justify-between w-full px-6 py-3 md:py-2 leading-5 cursor-pointer hover:text-purple-700"
               role="menuitem"
-              @click="selectCategory(category)"
+              @click="selectItem(item)"
             >
-              <span>{{ category }}</span>
-              <span v-if="category === selectedCategory">
+              <span>{{ item }}</span>
+              <span v-if="item === selectedItem">
                 <img src="../../assets/shared/icon-check.svg" />
               </span>
             </div>

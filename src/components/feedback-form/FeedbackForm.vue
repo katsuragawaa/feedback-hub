@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import GoBackButton from '../shared/GoBackButton.vue';
-import CategorySelector from './CategorySelector.vue';
+import DropdownSelector from './DropdownSelector.vue';
 import { ref } from 'vue';
 
 const { title } = defineProps({
@@ -15,6 +15,7 @@ const category = ref('Feature');
 const feedbackDetails = ref('');
 
 function handleCategorySelection(selectedCategory: string) {
+  console.log(selectedCategory);
   category.value = selectedCategory;
 }
 </script>
@@ -49,9 +50,13 @@ function handleCategorySelection(selectedCategory: string) {
           </div>
 
           <div class="mt-12">
-            <CategorySelector
-              :category="category"
-              @categorySelected="handleCategorySelection"
+            <div class="font-bold">Category</div>
+            <div class="text-gray-600 mt-2">
+              Choose a category for your feedback
+            </div>
+            <DropdownSelector
+              :items="['Feature', 'UI', 'UX', 'Enhancement', 'Bug']"
+              @itemSelected="handleCategorySelection"
             />
           </div>
 
