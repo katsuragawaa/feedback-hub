@@ -83,7 +83,7 @@ export default defineComponent({
         :filteredFeedbacks="filteredFeedbacks"
         :noFeedback="feedbacks.length === 0"
       />
-      <div v-else class="w-28 m-96 md:m-24 text-purple-700 mx-auto">
+      <div v-else class="w-28 my-96 text-purple-700 mx-auto">
         <Spinner :size="28" />
       </div>
     </div>
