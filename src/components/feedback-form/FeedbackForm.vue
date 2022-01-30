@@ -4,9 +4,20 @@ import DropdownSelector from './DropdownSelector.vue';
 import { computed, ref } from 'vue';
 import router from '../../router';
 
+type FeedbackFormData = {
+  title: string;
+  category: string;
+  status: string;
+  details: string;
+};
+
 const { title, isEdit } = defineProps<{
   title: string;
   isEdit?: boolean;
+}>();
+
+const emit = defineEmits<{
+  (e: 'addFeedback', feedback: FeedbackFormData): void;
 }>();
 
 const feedbackTitle = ref('');
@@ -44,10 +55,7 @@ function addFeedback() {
     details: removeEmptySpaces(feedbackDetails.value),
   };
 
-  // TODO: save to firebase
-  console.log(feedback);
-
-  router.push({ name: 'Home' });
+  emit('addFeedback', feedback);
 }
 </script>
 
