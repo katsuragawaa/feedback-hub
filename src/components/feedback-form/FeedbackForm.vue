@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import GoBackButton from '../shared/GoBackButton.vue';
-import {} from 'vue';
+import CategorySelector from './CategorySelector.vue';
+import { ref } from 'vue';
 
 const { title } = defineProps({
   title: {
@@ -8,6 +9,12 @@ const { title } = defineProps({
     required: true,
   },
 });
+
+const formInputClasses = 'w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md';
+
+const feedbackTitle = ref('');
+const category = ref('Feature');
+const feedbackDetails = ref('');
 </script>
 
 <template>
@@ -25,7 +32,34 @@ const { title } = defineProps({
             alt="New feedback icon"
           />
         </div>
-        <div class="text-xl font-bold">{{ title }}</div>
+        <h1 class="text-xl mt-6 font-bold">{{ title }}</h1>
+
+        <div class="mt-16">
+          <div class="font-bold">Feedback Title: {{ feedbackTitle }}</div>
+          <div class="text-gray-600 mt-2">
+            Add a short, descriptive headline
+          </div>
+          <input
+            v-model="feedbackTitle"
+            class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+          />
+        </div>
+
+        <div class="mt-12">
+          <CategorySelector :category="category" />
+        </div>
+
+        <div class="mt-12">
+          <div class="font-bold">Feedback Detail</div>
+          <div class="text-gray-600 mt-2">
+            Include any specific comments on what should be improved, added,
+            etc.
+          </div>
+          <textarea
+            v-model="feedbackDetails"
+            class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+          />
+        </div>
       </div>
     </div>
   </div>
