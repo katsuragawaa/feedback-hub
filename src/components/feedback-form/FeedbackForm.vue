@@ -13,9 +13,10 @@ type FeedbackFormData = {
   details: string;
 };
 
-const { title, isEdit } = defineProps<{
+const { title, isEdit, loading } = defineProps<{
   title: string;
   isEdit?: boolean;
+  loading: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -50,6 +51,8 @@ function goBack() {
 }
 
 function saveFeedback() {
+  if (disableAddButton.value || loading) return;
+
   const feedback = {
     id: uuidv4(), // TODO: don't change if is a edit
     title: removeEmptySpaces(feedbackTitle.value),
@@ -139,7 +142,8 @@ function saveFeedback() {
               :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
               @click="saveFeedback"
             >
-              Add Feedback
+              <span v-if="loading">Saving</span>
+              <span v-else>Add Feedback</span>
             </button>
           </div>
         </div>

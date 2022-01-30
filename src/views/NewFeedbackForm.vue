@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { writeFeedbackData } from '../services/DatabaseService';
 import FeedbackForm from '../components/feedback-form/FeedbackForm.vue';
+import router from '../router';
+import { ref } from 'vue';
 
 type FeedbackFormData = {
   id: string;
@@ -10,11 +12,22 @@ type FeedbackFormData = {
   details: string;
 };
 
+const loading = ref(false);
+
 function saveFeedback(feedback: FeedbackFormData) {
-  writeFeedbackData(feedback);
+  loading.value = true;
+  setTimeout(() => {
+    writeFeedbackData(feedback);
+    loading.value = false;
+    router.push({ name: 'Home' });
+  }, 2000);
 }
 </script>
 
 <template>
-  <FeedbackForm title="Create a feedback" @saveFeedback="saveFeedback" />
+  <FeedbackForm
+    title="Create a feedback"
+    @saveFeedback="saveFeedback"
+    :loading="loading"
+  />
 </template>
