@@ -36,34 +36,36 @@ function handleCategorySelection(selectedCategory: string) {
         </div>
         <h1 class="text-xl mt-6 font-bold">{{ title }}</h1>
 
-        <div class="mt-16">
-          <div class="font-bold">Feedback Title: {{ feedbackTitle }}</div>
-          <div class="text-gray-600 mt-2">
-            Add a short, descriptive headline
+        <div class="md:text-sm">
+          <div class="mt-16">
+            <div class="font-bold">Feedback Title: {{ feedbackTitle }}</div>
+            <div class="text-gray-600 mt-2">
+              Add a short, descriptive headline
+            </div>
+            <input
+              v-model="feedbackTitle"
+              class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+            />
           </div>
-          <input
-            v-model="feedbackTitle"
-            class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
-          />
-        </div>
 
-        <div class="mt-12">
-          <CategorySelector
-            :category="category"
-            @categorySelected="handleCategorySelection"
-          />
-        </div>
-
-        <div class="mt-12">
-          <div class="font-bold">Feedback Detail</div>
-          <div class="text-gray-600 mt-2">
-            Include any specific comments on what should be improved, added,
-            etc.
+          <div class="mt-12">
+            <CategorySelector
+              :category="category"
+              @categorySelected="handleCategorySelection"
+            />
           </div>
-          <textarea
-            v-model="feedbackDetails"
-            class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
-          />
+
+          <div class="mt-12">
+            <div class="font-bold">Feedback Detail</div>
+            <div class="text-gray-600 mt-2">
+              Include any specific comments on what should be improved, added,
+              etc.
+            </div>
+            <textarea
+              v-model="feedbackDetails"
+              class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+            />
+          </div>
         </div>
       </div>
     </div>

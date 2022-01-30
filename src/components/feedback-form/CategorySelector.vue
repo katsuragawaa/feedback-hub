@@ -80,7 +80,7 @@ const emit = defineEmits<{
               v-for="(category, index) in categories"
               :key="index"
               :tabindex="index"
-              class="text-gray-600 flex items-center justify-between w-full px-6 py-3 leading-5 cursor-pointer hover:text-purple-700"
+              class="text-gray-600 flex items-center justify-between w-full px-6 py-3 md:py-2 leading-5 cursor-pointer hover:text-purple-700"
               role="menuitem"
               @click="selectCategory(category)"
             >
