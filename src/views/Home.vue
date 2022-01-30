@@ -16,8 +16,9 @@ type SortBy = {
 type Feedback = {
   id: string;
   title: string;
-  description: string;
-  type: string;
+  details: string;
+  category: string;
+  status: string;
   votes: number;
   comments: number;
 };
@@ -26,17 +27,19 @@ const dummyFeedbacks = [
   {
     id: '1',
     title: 'More comprehensive reports',
-    description:
+    details:
       'It would be great to see a more detailed breakdown of solutions.',
-    type: 'Enhancement',
+    category: 'Enhancement',
+    status: 'Suggestions',
     votes: 123,
     comments: 4,
   },
   {
     id: '2',
     title: 'Add tags for solutions',
-    description: 'Easier to search for solutions based on a specific stack.',
-    type: 'Feature',
+    details: 'Easier to search for solutions based on a specific stack.',
+    category: 'Feature',
+    status: 'Suggestions',
     votes: 23,
     comments: 13,
   },
@@ -55,9 +58,9 @@ export default defineComponent({
       feedbacks: [] as Feedback[],
     };
   },
-  mounted() {
-    readAllFeedbackData();
-    this.feedbacks = dummyFeedbacks;
+  async mounted() {
+    const fetchedFeedbacksObject = await readAllFeedbackData();
+    this.feedbacks = Object.values(fetchedFeedbacksObject);
   },
   methods: {
     handleFilterSelection(filter: string) {
@@ -74,7 +77,7 @@ export default defineComponent({
       if (filter === 'All') {
         return this.feedbacks;
       }
-      return this.feedbacks.filter((feedback) => feedback.type === filter);
+      return this.feedbacks.filter((feedback) => feedback.category === filter);
     },
   },
 });

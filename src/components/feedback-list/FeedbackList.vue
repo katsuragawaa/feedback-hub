@@ -6,8 +6,9 @@ import FeedbackEmpty from './FeedbackEmpty.vue';
 type Feedback = {
   id: string;
   title: string;
-  description: string;
-  type: string;
+  details: string;
+  category: string;
+  status: string;
   votes: number;
   comments: number;
 };

@@ -5,14 +5,15 @@ const { feedback } = defineProps<{
   feedback: {
     id: string;
     title: string;
-    description: string;
-    type: string;
+    details: string;
+    category: string;
     votes: number;
     comments: number;
   };
 }>();
 
 const voted = ref(false);
+
 const vote = () => {
   voted.value = !voted.value;
 
@@ -54,12 +55,12 @@ const vote = () => {
       >
         <div class="font-bold sm:text-lg text-base">{{ feedback.title }}</div>
         <div class="text-gray-500 mt-2 mb-4 sm:text-base text-sm">
-          {{ feedback.description }}
+          {{ feedback.details }}
         </div>
         <div
           class="rounded-lg py-2 px-6 w-fit bg-blue-600 font-medium text-sm text-blue-700 bg-opacity-20"
         >
-          {{ feedback.type }}
+          {{ feedback.category }}
         </div>
       </div>
     </div>
