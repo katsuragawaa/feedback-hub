@@ -43,4 +43,4 @@ function writeFeedbackData(feedback: FeedbackFormData) {
   set(ref(database, 'feedbacks/' + feedback.id), feedback);
 }
 
-export { writeFeedbackData };
+export { readAllFeedbackData, readFeedbackData, writeFeedbackData };
