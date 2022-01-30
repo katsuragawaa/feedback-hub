@@ -10,11 +10,13 @@ const { title } = defineProps({
   },
 });
 
-const formInputClasses = 'w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md';
-
 const feedbackTitle = ref('');
 const category = ref('Feature');
 const feedbackDetails = ref('');
+
+function handleCategorySelection(selectedCategory: string) {
+  category.value = selectedCategory;
+}
 </script>
 
 <template>
@@ -46,7 +48,10 @@ const feedbackDetails = ref('');
         </div>
 
         <div class="mt-12">
-          <CategorySelector :category="category" />
+          <CategorySelector
+            :category="category"
+            @categorySelected="handleCategorySelection"
+          />
         </div>
 
         <div class="mt-12">
