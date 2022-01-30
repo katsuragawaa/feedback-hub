@@ -85,6 +85,20 @@ function handleStatusUpdate(selectedStatus: string) {
               class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
             />
           </div>
+
+          <div class="flex justify-end mt-12">
+            <button
+              class="py-3 px-6 rounded-lg hover:bg-gray-200 hover:text-black duration-500"
+            >
+              Cancel
+            </button>
+            <div class="w-4"></div>
+            <button
+              class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:brightness-125 duration-500"
+            >
+              Add Feedback
+            </button>
+          </div>
         </div>
       </div>
     </div>
