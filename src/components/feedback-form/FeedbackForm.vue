@@ -17,7 +17,7 @@ const { title, isEdit } = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'addFeedback', feedback: FeedbackFormData): void;
+  (e: 'saveFeedback', feedback: FeedbackFormData): void;
 }>();
 
 const feedbackTitle = ref('');
@@ -47,7 +47,7 @@ function goBack() {
   router.back();
 }
 
-function addFeedback() {
+function saveFeedback() {
   const feedback = {
     title: removeEmptySpaces(feedbackTitle.value),
     category: category.value,
@@ -55,7 +55,7 @@ function addFeedback() {
     details: removeEmptySpaces(feedbackDetails.value),
   };
 
-  emit('addFeedback', feedback);
+  emit('saveFeedback', feedback);
 }
 </script>
 
@@ -134,7 +134,7 @@ function addFeedback() {
             <button
               class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:brightness-125 duration-500"
               :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
-              @click="addFeedback"
+              @click="saveFeedback"
             >
               Add Feedback
             </button>

@@ -8,11 +8,11 @@ type FeedbackFormData = {
   details: string;
 };
 
-function addFeedback(feedback: FeedbackFormData) {
+function saveFeedback(feedback: FeedbackFormData) {
   console.log(feedback);
 }
 </script>
 
 <template>
-  <FeedbackForm title="Create a feedback" @addFeedback="addFeedback" />
+  <FeedbackForm title="Create a feedback" @saveFeedback="saveFeedback" />
 </template>
