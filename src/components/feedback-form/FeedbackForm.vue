@@ -15,7 +15,6 @@ const category = ref('Feature');
 const feedbackDetails = ref('');
 
 function handleCategorySelection(selectedCategory: string) {
-  console.log(selectedCategory);
   category.value = selectedCategory;
 }
 </script>
@@ -56,6 +55,15 @@ function handleCategorySelection(selectedCategory: string) {
             </div>
             <DropdownSelector
               :items="['Feature', 'UI', 'UX', 'Enhancement', 'Bug']"
+              @itemSelected="handleCategorySelection"
+            />
+          </div>
+
+          <div class="mt-12">
+            <div class="font-bold">Update Status</div>
+            <div class="text-gray-600 mt-2">Change feature state</div>
+            <DropdownSelector
+              :items="['Suggestion', 'Planned', 'In-progress', 'Live']"
               @itemSelected="handleCategorySelection"
             />
           </div>
