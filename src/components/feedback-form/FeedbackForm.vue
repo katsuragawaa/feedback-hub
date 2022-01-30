@@ -55,6 +55,7 @@ function handleCategorySelection(selectedCategory: string) {
             </div>
             <DropdownSelector
               :items="['Feature', 'UI', 'UX', 'Enhancement', 'Bug']"
+              :preSelectedItem="'Feature'"
               @itemSelected="handleCategorySelection"
             />
           </div>
@@ -64,6 +65,7 @@ function handleCategorySelection(selectedCategory: string) {
             <div class="text-gray-600 mt-2">Change feature state</div>
             <DropdownSelector
               :items="['Suggestion', 'Planned', 'In-progress', 'Live']"
+              :preSelectedItem="'Suggestion'"
               @itemSelected="handleCategorySelection"
             />
           </div>

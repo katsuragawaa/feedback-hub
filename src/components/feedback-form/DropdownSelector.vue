@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const { items } = defineProps<{
+const { items, preSelectedItem } = defineProps<{
   items: string[];
+  preSelectedItem: string;
 }>();
 
-const selectedItem = ref(items[0]);
+const selectedItem = ref(preSelectedItem);
 const dropdownVisibility = ref(false);
 
 const selectItem = (item: string) => {
@@ -68,7 +69,7 @@ const emit = defineEmits<{
       <transition name="list">
         <div
           v-show="dropdownVisibility"
-          class="absolute left-0 w-full mt-2 origin-top-right bg-white rounded-md shadow-2xl"
+          class="absolute left-0 w-full mt-2 origin-top-right bg-white rounded-md shadow-2xl z-10"
           role="menu"
         >
           <div class="py-1">
