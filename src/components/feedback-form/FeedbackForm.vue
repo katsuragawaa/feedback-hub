@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import GoBackButton from '../shared/GoBackButton.vue';
 import DropdownSelector from './DropdownSelector.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const { title, isEdit } = defineProps<{
   title: string;
@@ -13,12 +13,22 @@ const category = ref('Feature');
 const status = ref('Suggestion');
 const feedbackDetails = ref('');
 
+const disableAddButton = computed(() => {
+  const cleanTitle = removeEmptySpaces(feedbackTitle.value);
+  const cleanDetails = removeEmptySpaces(feedbackDetails.value);
+  return cleanTitle.length === 0 || cleanDetails.length === 0;
+});
+
 function handleCategorySelection(selectedCategory: string) {
   category.value = selectedCategory;
 }
 
 function handleStatusUpdate(selectedStatus: string) {
   status.value = selectedStatus;
+}
+
+function removeEmptySpaces(value: string) {
+  return value.replace(/\s+/g, ' ').trim();
 }
 </script>
 
@@ -95,6 +105,7 @@ function handleStatusUpdate(selectedStatus: string) {
             <div class="w-4"></div>
             <button
               class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:brightness-125 duration-500"
+              :class="{ 'cursor-not-allowed': disableAddButton }"
             >
               Add Feedback
             </button>
