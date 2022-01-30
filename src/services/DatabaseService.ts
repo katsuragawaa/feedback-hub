@@ -11,7 +11,6 @@ type FeedbackFormData = {
 
 async function readAllFeedbackData() {
   const dbRef = ref(database);
-  const feedbacks: FeedbackFormData[] = [];
   const snapshot = await get(child(dbRef, 'feedbacks/'));
 
   return snapshot.exists() ? snapshot.val() : {};
