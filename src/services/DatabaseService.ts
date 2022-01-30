@@ -9,6 +9,21 @@ type FeedbackFormData = {
   details: string;
 };
 
+function readAllFeedbackData() {
+  const dbRef = ref(database);
+  get(child(dbRef, 'feedbacks/'))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log(snapshot.val());
+      } else {
+        console.log('No data available');
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 function readFeedbackData(id: string) {
   const dbRef = ref(database);
   get(child(dbRef, `feedbacks/${id}`))
