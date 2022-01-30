@@ -2,6 +2,7 @@
 import GoBackButton from '../shared/GoBackButton.vue';
 import DropdownSelector from './DropdownSelector.vue';
 import { computed, ref } from 'vue';
+import router from '../../router';
 
 const { title, isEdit } = defineProps<{
   title: string;
@@ -29,6 +30,24 @@ function handleStatusUpdate(selectedStatus: string) {
 
 function removeEmptySpaces(value: string) {
   return value.replace(/\s+/g, ' ').trim();
+}
+
+function goBack() {
+  router.back();
+}
+
+function addFeedback() {
+  const feedback = {
+    title: removeEmptySpaces(feedbackTitle.value),
+    category: category.value,
+    status: status.value,
+    details: removeEmptySpaces(feedbackDetails.value),
+  };
+
+  // TODO: save to firebase
+  console.log(feedback);
+
+  router.push({ name: 'Home' });
 }
 </script>
 
@@ -99,13 +118,15 @@ function removeEmptySpaces(value: string) {
           <div class="flex justify-end mt-12">
             <button
               class="py-3 px-6 rounded-lg hover:bg-gray-200 hover:text-black duration-500"
+              @click="goBack"
             >
               Cancel
             </button>
             <div class="w-4"></div>
             <button
               class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:brightness-125 duration-500"
-              :class="{ 'cursor-not-allowed': disableAddButton }"
+              :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
+              @click="addFeedback"
             >
               Add Feedback
             </button>
