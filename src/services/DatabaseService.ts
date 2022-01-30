@@ -9,18 +9,12 @@ type FeedbackFormData = {
   details: string;
 };
 
-async function readAllFeedbackData(): Promise<FeedbackFormData[]> {
+async function readAllFeedbackData() {
   const dbRef = ref(database);
   const feedbacks: FeedbackFormData[] = [];
   const snapshot = await get(child(dbRef, 'feedbacks/'));
 
-  if (snapshot.exists()) {
-    feedbacks.push(snapshot.val());
-  } else {
-    console.log('No data available');
-  }
-  
-  return feedbacks;
+  return snapshot.exists() ? snapshot.val() : {};
 }
 
 function readFeedbackData(id: string) {
