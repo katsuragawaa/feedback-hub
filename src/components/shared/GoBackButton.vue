@@ -14,7 +14,7 @@ const { textColor, iconColor } = defineProps({
 });
 
 const textClass = computed(() => {
-  return `text-${textColor} font-bold ml-3 text-xs sm:text-sm`;
+  return `text-${textColor} font-bold ml-3 text-sm`;
 });
 
 function goBack() {
