@@ -10,14 +10,16 @@ type FeedbackFormData = {
   category: string;
   status: string;
   details: string;
+  votes?: number;
 };
 
 const loading = ref(false);
 
 function saveFeedback(feedback: FeedbackFormData) {
   loading.value = true;
+
   setTimeout(() => {
-    writeFeedbackData(feedback);
+    writeFeedbackData({ ...feedback, votes: 0 });
     loading.value = false;
     router.push({ name: 'Home' });
   }, 2000);

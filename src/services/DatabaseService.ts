@@ -7,6 +7,7 @@ type FeedbackFormData = {
   category: string;
   status: string;
   details: string;
+  votes: number;
 };
 
 async function readAllFeedbackData() {
