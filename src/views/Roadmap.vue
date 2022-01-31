@@ -9,9 +9,9 @@ import RoadmapColumn from '../components/roadmap-column/RoadmapColumn.vue';
   >
     <RoadmapToolbar />
 
-    <div class="flex justify-between">
+    <div class="flex justify-between mt-8">
       <RoadmapColumn />
-      <RoadmapColumn />
+      <RoadmapColumn class="mx-10 md:mx-0" />
       <RoadmapColumn />
     </div>
   </div>
