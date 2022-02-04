@@ -1,32 +1,32 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
 type SortBy = {
-  title: string
-  index: number
-  key: string
-  order: string
-}
+  title: string;
+  index: number;
+  key: string;
+  order: string;
+};
 
 const emit = defineEmits<{
-  (e: 'sort', option: SortBy): void
-}>()
+  (e: 'sort', option: SortBy): void;
+}>();
 
 const sortOptions = [
   { title: 'Most Upvotes', index: 0, key: 'votes', order: 'desc' },
   { title: 'Least Upvotes', index: 1, key: 'votes', order: 'asc' },
   { title: 'Most Comments', index: 2, key: 'comments', order: 'desc' },
   { title: 'Least Comments', index: 3, key: 'comments', order: 'asc' },
-]
+];
 
-const selectedOption = ref(sortOptions[0])
-const dropdownVisibility = ref(false)
+const selectedOption = ref(sortOptions[0]);
+const dropdownVisibility = ref(false);
 
 const selectOption = (option: SortBy) => {
-  emit('sort', option)
-  selectedOption.value = option
-  dropdownVisibility.value = false
-}
+  emit('sort', option);
+  selectedOption.value = option;
+  dropdownVisibility.value = false;
+};
 </script>
 
 <template>
@@ -46,17 +46,30 @@ const selectOption = (option: SortBy) => {
   <div class="flex items-center justify-center">
     <div class="relative inline-block text-left">
       <button
-        class="inline-flex items-center justify-center w-full transition duration-150 ease-in-out text-gray-300 md:text-gray-600 hover:brightness-200 md:hover:brightness-0"
+        class="inline-flex w-full items-center justify-center text-gray-300 transition duration-150 ease-in-out hover:brightness-200 md:text-gray-600 md:hover:brightness-0"
         type="button"
         @click="dropdownVisibility = !dropdownVisibility"
       >
         <div>
           Sort by :
-          <span class="font-bold ml-1">{{ selectedOption.title }}</span>
+          <span class="ml-1 font-bold">{{ selectedOption.title }}</span>
         </div>
-        <div class="ml-2 duration-300" :class="dropdownVisibility && 'rotate-180'">
-          <svg class="stroke-current" width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1l4 4 4-4" stroke-width="2" fill="none" fill-rule="evenodd" />
+        <div
+          class="ml-2 duration-300"
+          :class="dropdownVisibility && 'rotate-180'"
+        >
+          <svg
+            class="stroke-current"
+            width="10"
+            height="7"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1l4 4 4-4"
+              stroke-width="2"
+              fill="none"
+              fill-rule="evenodd"
+            />
           </svg>
         </div>
       </button>
@@ -64,15 +77,15 @@ const selectOption = (option: SortBy) => {
       <transition name="list">
         <div
           v-show="dropdownVisibility"
-          class="absolute left-0 w-52 mt-2 origin-top-right bg-white rounded-md shadow-xl z-10"
+          class="absolute left-0 z-10 mt-2 w-52 origin-top-right rounded-md bg-white shadow-xl"
           role="menu"
         >
           <div class="py-1">
             <div
-              v-for="(option) in sortOptions"
+              v-for="option in sortOptions"
               :key="option.key"
               :tabindex="option.index"
-              class="text-gray-700 flex items-center justify-between w-full px-4 py-3 text-sm leading-5 text-left cursor-pointer hover:text-purple-700"
+              class="flex w-full cursor-pointer items-center justify-between px-4 py-3 text-left text-sm leading-5 text-gray-700 hover:text-purple-700"
               role="menuitem"
               @click="selectOption(option)"
             >

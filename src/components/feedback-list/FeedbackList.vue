@@ -37,7 +37,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="mt-6 transition md:mt-0 md:mx-6">
+  <div class="mt-6 transition md:mx-6 md:mt-0">
     <transition-group name="list-slide" v-if="filteredFeedbacks.length">
       <FeedbackCard
         v-for="feedback in filteredFeedbacks"

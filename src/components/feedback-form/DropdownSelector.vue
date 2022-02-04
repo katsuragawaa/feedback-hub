@@ -37,7 +37,7 @@ const emit = defineEmits<{
   <div class="flex flex-col">
     <div class="relative">
       <div
-        class="flex justify-between w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md cursor-pointer relative"
+        class="relative mt-4 flex w-full cursor-pointer justify-between rounded-md bg-zinc-200 px-5 py-3"
         @click="dropdownVisibility = !dropdownVisibility"
       >
         <span>{{ selectedItem }}</span>
@@ -69,7 +69,7 @@ const emit = defineEmits<{
       <transition name="list">
         <div
           v-show="dropdownVisibility"
-          class="absolute left-0 w-full mt-2 origin-top-right bg-white rounded-md shadow-2xl z-10"
+          class="absolute left-0 z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-2xl"
           role="menu"
         >
           <div class="py-1">
@@ -77,7 +77,7 @@ const emit = defineEmits<{
               v-for="(item, index) in items"
               :key="index"
               :tabindex="index"
-              class="text-gray-600 flex items-center justify-between w-full px-6 py-3 md:py-2 leading-5 cursor-pointer hover:text-purple-700"
+              class="flex w-full cursor-pointer items-center justify-between px-6 py-3 leading-5 text-gray-600 hover:text-purple-700 md:py-2"
               role="menuitem"
               @click="selectItem(item)"
             >

@@ -9,25 +9,25 @@ const roadmap = {
 
 <template>
   <div class="w-full rounded-xl bg-white">
-    <div class="p-6 h-full flex flex-col">
-      <div class="font-bold text-lg flex justify-between items-baseline mb-4">
-        <span class="font-bold text-base sm:text-lg text-gray-700"
+    <div class="flex h-full flex-col p-6">
+      <div class="mb-4 flex items-baseline justify-between text-lg font-bold">
+        <span class="text-base font-bold text-gray-700 sm:text-lg"
           >Roadmap</span
         >
         <router-link
           :to="{ name: 'Roadmap' }"
-          class="underline text-xs sm:text-sm text-blue-600 hover:text-opacity-60"
+          class="text-xs text-blue-600 underline hover:text-opacity-60 sm:text-sm"
           >View</router-link
         >
       </div>
-      <div class="flex flex-col h-full text-gray-500">
+      <div class="flex h-full flex-col text-gray-500">
         <div
           v-for="(value, status) in roadmap"
           :key="value.id"
-          class="flex flex-grow items-center mt-1 text-sm sm:text-base"
+          class="mt-1 flex flex-grow items-center text-sm sm:text-base"
         >
-          <div class="w-4 flex mr-2">
-            <div class="w-2 h-2 rounded-full" :class="value.color"></div>
+          <div class="mr-2 flex w-4">
+            <div class="h-2 w-2 rounded-full" :class="value.color"></div>
           </div>
           <div class="flex-1">{{ status }}</div>
           <div class="w-4 text-center font-bold">{{ value.count }}</div>

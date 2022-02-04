@@ -23,7 +23,7 @@ function goBack() {
 </script>
 
 <template>
-  <div class="flex items-center cursor-pointer hover:underline" @click="goBack">
+  <div class="flex cursor-pointer items-center hover:underline" @click="goBack">
     <svg width="7" height="10" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M6 9L2 5l4-4"

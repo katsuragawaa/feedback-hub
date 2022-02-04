@@ -28,14 +28,14 @@ const toggleSidebar = () => {
 
 <template>
   <div
-    class="w-full flex justify-between items-center p-6 rounded-xl gradient-bg md:rounded-none md:fixed md:z-20 md:w-screen"
+    class="gradient-bg flex w-full items-center justify-between rounded-xl p-6 md:fixed md:z-20 md:w-screen md:rounded-none"
   >
     <div class="flex flex-col">
       <div class="my-10 md:m-0"></div>
-      <div class="font-bold text-lg text-white mb-1">Feedback Hub</div>
+      <div class="mb-1 text-lg font-bold text-white">Feedback Hub</div>
       <div class="text-sm text-neutral-100">Give us your insight</div>
     </div>
-    <div class="h-5 w-5 relative hidden md:block" @click="toggleSidebar">
+    <div class="relative hidden h-5 w-5 md:block" @click="toggleSidebar">
       <transition name="fade">
         <img
           v-if="sidebarOn"

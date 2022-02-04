@@ -5,11 +5,11 @@ import RoadmapColumn from '../components/roadmap-column/RoadmapColumn.vue';
 
 <template>
   <div
-    class="px-10 py-14 xl:px-36 md:p-0 min-h-screen bg-zinc-200 flex flex-col"
+    class="flex min-h-screen flex-col bg-zinc-200 px-10 py-14 md:p-0 xl:px-36"
   >
     <RoadmapToolbar />
 
-    <div class="flex justify-between mt-8">
+    <div class="mt-8 flex justify-between">
       <RoadmapColumn />
       <RoadmapColumn class="mx-10 md:mx-0" />
       <RoadmapColumn />

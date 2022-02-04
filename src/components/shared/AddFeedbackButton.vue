@@ -1,7 +1,7 @@
 <template>
   <router-link :to="{ name: 'NewFeedbackForm' }">
     <button
-      class="bg-purple-600 text-white sm:text-sm text-xs py-3 px-6 rounded-lg hover:brightness-125 duration-300"
+      class="rounded-lg bg-purple-600 py-3 px-6 text-xs text-white duration-300 hover:brightness-125 sm:text-sm"
     >
       <span class="font-bold">Add Feedback</span>
     </button>

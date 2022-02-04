@@ -26,10 +26,10 @@ const vote = () => {
 </script>
 
 <template>
-  <div class="flex justify-between bg-white rounded-xl p-8 mb-4 md:relative">
+  <div class="mb-4 flex justify-between rounded-xl bg-white p-8 md:relative">
     <div class="flex md:flex-col md:items-start">
       <div
-        class="flex flex-col justify-between items-center h-14 w-11 py-3 px-2 bg-blue-600 rounded-lg cursor-pointer duration-200 md:order-1 md:flex-row md:h-fit md:w-fit md:py-2 md:px-4 md:mt-4"
+        class="flex h-14 w-11 cursor-pointer flex-col items-center justify-between rounded-lg bg-blue-600 py-3 px-2 duration-200 md:order-1 md:mt-4 md:h-fit md:w-fit md:flex-row md:py-2 md:px-4"
         :class="voted ? 'bg-opacity-100 text-white' : 'bg-opacity-10'"
         @click="vote"
       >
@@ -48,17 +48,17 @@ const vote = () => {
             fill-rule="evenodd"
           />
         </svg>
-        <div class="font-bold text-sm md:ml-3">{{ feedback.votes }}</div>
+        <div class="text-sm font-bold md:ml-3">{{ feedback.votes }}</div>
       </div>
       <div
-        class="flex flex-col mx-10 cursor-pointer hover:text-blue-600 duration-300 md:m-0"
+        class="mx-10 flex cursor-pointer flex-col duration-300 hover:text-blue-600 md:m-0"
       >
-        <div class="font-bold sm:text-lg text-base">{{ feedback.title }}</div>
-        <div class="text-gray-500 mt-2 mb-4 sm:text-base text-sm">
+        <div class="text-base font-bold sm:text-lg">{{ feedback.title }}</div>
+        <div class="mt-2 mb-4 text-sm text-gray-500 sm:text-base">
           {{ feedback.details }}
         </div>
         <div
-          class="rounded-lg py-2 px-6 w-fit bg-blue-600 font-medium text-sm text-blue-700 bg-opacity-20"
+          class="w-fit rounded-lg bg-blue-600 bg-opacity-20 py-2 px-6 text-sm font-medium text-blue-700"
         >
           {{ feedback.category }}
         </div>
@@ -70,7 +70,7 @@ const vote = () => {
       <div class="min-w-max">
         <img class="w-5" src="../../assets/shared/icon-comments.svg" />
       </div>
-      <div class="font-bold text-lg ml-3">{{ feedback.comments.length }}</div>
+      <div class="ml-3 text-lg font-bold">{{ feedback.comments.length }}</div>
     </div>
   </div>
 </template>

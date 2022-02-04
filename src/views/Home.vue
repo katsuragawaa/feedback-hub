@@ -60,7 +60,7 @@ export default defineComponent({
       if (filter === 'All') {
         return this.feedbacks;
       }
-      return this.feedbacks.filter((feedback) => feedback.category === filter);
+      return this.feedbacks.filter(feedback => feedback.category === filter);
     },
   },
 });
@@ -68,11 +68,11 @@ export default defineComponent({
 
 <template>
   <div
-    class="px-10 xl:px-36 py-14 md:p-0 min-h-screen bg-zinc-200 flex flex-col xl:flex-row"
+    class="flex min-h-screen flex-col bg-zinc-200 px-10 py-14 md:p-0 xl:flex-row xl:px-36"
   >
     <MenuCards @filterSelected="handleFilterSelection" />
     <div class="h-10 md:hidden"></div>
-    <div class="flex flex-col xl:ml-7 w-full">
+    <div class="flex w-full flex-col xl:ml-7">
       <FeedbackToolbar
         :feedbacksCount="filteredFeedbacks.length"
         @sort="handleSort"
@@ -83,7 +83,7 @@ export default defineComponent({
         :filteredFeedbacks="filteredFeedbacks"
         :noFeedback="feedbacks.length === 0"
       />
-      <div v-else class="w-28 my-96 text-purple-700 mx-auto">
+      <div v-else class="my-96 mx-auto w-28 text-purple-700">
         <Spinner :size="28" />
       </div>
     </div>

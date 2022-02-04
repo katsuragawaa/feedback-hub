@@ -70,12 +70,12 @@ function saveFeedback() {
 
 <template>
   <div
-    class="px-28 py-14 xl:px-36 text-gray-600 md:px-6 min-h-screen bg-zinc-200 flex flex-col items-center"
+    class="flex min-h-screen flex-col items-center bg-zinc-200 px-28 py-14 text-gray-600 md:px-6 xl:px-36"
   >
-    <div class="max-w-3xl min-w-[540px] md:min-w-full">
+    <div class="min-w-[540px] max-w-3xl md:min-w-full">
       <GoBackButton textColor="gray-600" iconColor="#4661E6" />
       <div
-        class="flex flex-col bg-white rounded-xl px-11 pt-14 pb-11 mt-16 relative"
+        class="relative mt-16 flex flex-col rounded-xl bg-white px-11 pt-14 pb-11"
       >
         <div class="absolute left-11 -top-7 md:-top-5 md:w-10">
           <img
@@ -83,24 +83,24 @@ function saveFeedback() {
             alt="New feedback icon"
           />
         </div>
-        <h1 class="text-xl mt-6 font-bold">{{ title }}</h1>
+        <h1 class="mt-6 text-xl font-bold">{{ title }}</h1>
 
         <form @submit.prevent="saveFeedback">
           <div class="md:text-sm">
             <div class="mt-16">
               <div class="font-bold">Feedback Title: {{ feedbackTitle }}</div>
-              <div class="text-gray-600 mt-2">
+              <div class="mt-2 text-gray-600">
                 Add a short, descriptive headline
               </div>
               <input
                 v-model="feedbackTitle"
-                class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+                class="mt-4 w-full rounded-md bg-zinc-200 px-5 py-3"
               />
             </div>
 
             <div class="mt-12">
               <div class="font-bold">Category</div>
-              <div class="text-gray-600 mt-2">
+              <div class="mt-2 text-gray-600">
                 Choose a category for your feedback
               </div>
               <DropdownSelector
@@ -112,7 +112,7 @@ function saveFeedback() {
 
             <div v-if="isEdit" class="mt-12">
               <div class="font-bold">Update Status</div>
-              <div class="text-gray-600 mt-2">Change feature state</div>
+              <div class="mt-2 text-gray-600">Change feature state</div>
               <DropdownSelector
                 :items="['Suggestion', 'Planned', 'In-progress', 'Live']"
                 :preSelectedItem="status"
@@ -122,27 +122,27 @@ function saveFeedback() {
 
             <div class="mt-12">
               <div class="font-bold">Feedback Detail</div>
-              <div class="text-gray-600 mt-2">
+              <div class="mt-2 text-gray-600">
                 Include any specific comments on what should be improved, added,
                 etc.
               </div>
               <textarea
                 maxlength="500"
                 v-model="feedbackDetails"
-                class="w-full mt-4 px-5 py-3 bg-zinc-200 rounded-md"
+                class="mt-4 w-full rounded-md bg-zinc-200 px-5 py-3"
               />
             </div>
 
-            <div class="flex justify-end mt-12 mb-4 md:flex-col">
+            <div class="mt-12 mb-4 flex justify-end md:flex-col">
               <div
-                class="py-3 px-6 rounded-lg hover:bg-gray-200 hover:text-black duration-500 text-center md:mb-4"
+                class="rounded-lg py-3 px-6 text-center duration-500 hover:bg-gray-200 hover:text-black md:mb-4"
                 @click="goBack"
               >
                 Cancel
               </div>
               <div class="w-4"></div>
               <button
-                class="bg-purple-600 text-white py-3 px-6 rounded-lg hover:brightness-125 duration-500 flex justify-center"
+                class="flex justify-center rounded-lg bg-purple-600 py-3 px-6 text-white duration-500 hover:brightness-125"
                 :class="{ 'cursor-not-allowed bg-gray-500': disableAddButton }"
                 type="submit"
               >

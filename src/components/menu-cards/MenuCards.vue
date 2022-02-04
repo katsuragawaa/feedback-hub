@@ -23,7 +23,7 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div class="flex xl:flex-col xl:w-96 justify-between xl:justify-start">
+  <div class="flex justify-between xl:w-96 xl:flex-col xl:justify-start">
     <TitleCard @open="open" @close="close" />
     <FiltersCard class="md:hidden" @filterSelected="handleFilterSelection" />
     <RoadmapCard class="md:hidden" />
@@ -31,9 +31,9 @@ const emit = defineEmits<{
   <transition name="slide">
     <div
       v-if="sidebarOn"
-      class="absolute flex justify-end bg-black bg-opacity-50 w-screen h-screen z-10"
+      class="absolute z-10 flex h-screen w-screen justify-end bg-black bg-opacity-50"
     >
-      <div class="mt-[100px] p-6 bg-gray-200 w-80">
+      <div class="mt-[100px] w-80 bg-gray-200 p-6">
         <FiltersCard />
         <RoadmapCard />
       </div>
