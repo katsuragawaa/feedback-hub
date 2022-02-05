@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import GoBackButton from '../../../components/GoBackButton.vue';
-import Spinner from '../../../components/Spinner.vue';
+import GoBackButton from '@/components/GoBackButton.vue';
+import Spinner from '@/components/Spinner.vue';
 import DropdownSelector from './DropdownSelector.vue';
 
 import router from '../../../router';
@@ -80,7 +80,7 @@ function saveFeedback() {
       >
         <div class="absolute left-11 -top-7 md:-top-5 md:w-10">
           <img
-            src="../../../assets/shared/icon-new-feedback.svg"
+            src="@/assets/shared/icon-new-feedback.svg"
             alt="New feedback icon"
           />
         </div>

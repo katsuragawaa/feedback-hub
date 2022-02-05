@@ -91,7 +91,7 @@ const selectOption = (option: SortBy) => {
             >
               <span>{{ option.title }}</span>
               <span v-if="option.index === selectedOption.index">
-                <img src="../../../assets/shared/icon-check.svg" />
+                <img src="@/assets/shared/icon-check.svg" />
               </span>
             </div>
           </div>

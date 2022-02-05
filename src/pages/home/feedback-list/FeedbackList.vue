@@ -2,7 +2,7 @@
 import { Feedback } from '../../../types';
 
 import { defineComponent, PropType } from 'vue';
-import FeedbackCard from '../../../components/FeedbackCard.vue';
+import FeedbackCard from '@/components/FeedbackCard.vue';
 import FeedbackEmpty from './FeedbackEmpty.vue';
 
 export default defineComponent({

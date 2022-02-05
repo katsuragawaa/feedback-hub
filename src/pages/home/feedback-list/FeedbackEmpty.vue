@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AddFeedbackButton from '../../../components/AddFeedbackButton.vue';
+import AddFeedbackButton from '@/components/AddFeedbackButton.vue';
 
 const { selectedFilter, noFeedback } = defineProps({
   selectedFilter: {
@@ -18,7 +18,7 @@ const { selectedFilter, noFeedback } = defineProps({
     class="flex w-full flex-col items-center rounded-xl bg-white px-6 py-28 text-center"
   >
     <div>
-      <img class="w-36" src="../../../assets/suggestions/illustration-empty.svg" />
+      <img class="w-36" src="@/assets/suggestions/illustration-empty.svg" />
     </div>
     <div class="mt-14 mb-6">
       <div class="text-2xl font-bold text-gray-600">

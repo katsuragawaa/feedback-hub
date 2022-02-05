@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SortBySelector from './SortBySelector.vue';
-import AddFeedbackButton from '../../../components/AddFeedbackButton.vue';
+import AddFeedbackButton from '@/components/AddFeedbackButton.vue';
 
 type SortBy = {
   title: string;
@@ -29,7 +29,7 @@ function handleSort(option: SortBy) {
     <div class="flex items-center">
       <img
         class="h-7 w-7 md:hidden"
-        src="../../../assets/suggestions/icon-suggestions.svg"
+        src="@/assets/suggestions/icon-suggestions.svg"
       />
       <span class="px-6 text-lg font-bold md:hidden"
         >{{ feedbacksCount }} Suggestions</span

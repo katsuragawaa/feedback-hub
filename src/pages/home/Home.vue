@@ -1,8 +1,10 @@
 <script lang="ts">
+import { Feedback } from '../../types';
+
 import MenuCards from './menu-cards/MenuCards.vue';
 import FeedbackToolbar from './feedback-toolbar/FeedbackToolbar.vue';
 import FeedbackList from './feedback-list/FeedbackList.vue';
-import Spinner from '../../components/Spinner.vue';
+import Spinner from '@/components/Spinner.vue';
 
 import { readAllFeedbackData } from '../../services/DatabaseService';
 import { defineComponent } from 'vue';
@@ -13,16 +15,6 @@ type SortBy = {
   index: number;
   key: string;
   order: string;
-};
-
-type Feedback = {
-  id: string;
-  title: string;
-  details: string;
-  category: string;
-  status: string;
-  votes: number;
-  comments: string[];
 };
 
 export default defineComponent({

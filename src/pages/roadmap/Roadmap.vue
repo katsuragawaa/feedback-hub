@@ -1,20 +1,12 @@
 <script setup lang="ts">
+import { Feedback } from '../../types';
+
 import RoadmapToolbar from './roadmap-toolbar/RoadmapToolbar.vue';
 import RoadmapColumn from './roadmap-column/RoadmapColumn.vue';
-import Spinner from '../../components/Spinner.vue';
+import Spinner from '@/components/Spinner.vue';
 
 import { readAllFeedbackData } from '../../services/DatabaseService';
 import { ref, onMounted } from 'vue';
-
-type Feedback = {
-  id: string;
-  title: string;
-  details: string;
-  category: string;
-  status: string;
-  votes: number;
-  comments: string[];
-};
 
 const loading = ref(false);
 const feedbacks = ref([] as Feedback[]);

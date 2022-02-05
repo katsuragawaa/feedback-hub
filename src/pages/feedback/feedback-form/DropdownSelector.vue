@@ -83,7 +83,7 @@ const emit = defineEmits<{
             >
               <span>{{ item }}</span>
               <span v-if="item === selectedItem">
-                <img src="../../../assets/shared/icon-check.svg" />
+                <img src="@/assets/shared/icon-check.svg" />
               </span>
             </div>
           </div>

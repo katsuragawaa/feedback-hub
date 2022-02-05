@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AddFeedbackButton from '../../../components/AddFeedbackButton.vue';
-import GoBackButton from '../../../components/GoBackButton.vue';
+import AddFeedbackButton from '@/components/AddFeedbackButton.vue';
+import GoBackButton from '@/components/GoBackButton.vue';
 </script>
 
 <template>
