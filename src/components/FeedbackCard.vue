@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+
+type Feedback = {
+  id: string;
+  title: string;
+  details: string;
+  category: string;
+  status: string;
+  votes: number;
+  comments: string[]; // TODO
+};
+
 const { feedback } = defineProps<{
-  feedback: {
-    id: string;
-    title: string;
-    details: string;
-    category: string;
-    votes: number;
-    comments: string[]; // TODO
-  };
+  feedback: Feedback;
 }>();
 
 const voted = ref(false);
@@ -68,7 +72,7 @@ const vote = () => {
       class="flex items-center justify-center md:absolute md:right-8 md:bottom-8"
     >
       <div class="min-w-max">
-        <img class="w-5" src="../../../assets/shared/icon-comments.svg" />
+        <img class="w-5" src="../assets/shared/icon-comments.svg" />
       </div>
       <div class="ml-3 text-lg font-bold">{{ feedback.comments.length }}</div>
     </div>
