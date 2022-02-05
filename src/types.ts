@@ -17,3 +17,10 @@ export type FeedbackFormData = {
   votes?: number;
   comments?: string[]; // TODO: setup comments type
 };
+
+export type SortBy = {
+  title: string;
+  index: number;
+  key: string;
+  order: string;
+};

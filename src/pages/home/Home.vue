@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Feedback } from '../../types';
+import { Feedback, SortBy } from '../../types';
 
 import MenuCards from './menu-cards/MenuCards.vue';
 import FeedbackToolbar from './feedback-toolbar/FeedbackToolbar.vue';
@@ -9,13 +9,6 @@ import Spinner from '@/components/Spinner.vue';
 import { readAllFeedbackData } from '../../services/DatabaseService';
 import { defineComponent } from 'vue';
 import _ from 'lodash';
-
-type SortBy = {
-  title: string;
-  index: number;
-  key: string;
-  order: string;
-};
 
 export default defineComponent({
   name: 'Home',

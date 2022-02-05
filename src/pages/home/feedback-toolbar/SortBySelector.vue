@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-
-type SortBy = {
-  title: string;
-  index: number;
-  key: string;
-  order: string;
-};
+import { SortBy } from '../../../types';
 
 const emit = defineEmits<{
   (e: 'sort', option: SortBy): void;
