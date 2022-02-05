@@ -1,16 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-
-
-type Feedback = {
-  id: string;
-  title: string;
-  details: string;
-  category: string;
-  status: string;
-  votes: number;
-  comments: string[]; // TODO
-};
+import { Feedback } from '../types';
 
 const { feedback } = defineProps<{
   feedback: Feedback;

@@ -1,15 +1,6 @@
 import database from '../firebase';
 import { ref, set, get, child, onValue } from 'firebase/database';
-
-type FeedbackFormData = {
-  id: string;
-  title: string;
-  category: string;
-  status: string;
-  details: string;
-  votes: number;
-  comments: string[]; // TODO: setup comments type
-};
+import { FeedbackFormData } from '../types';
 
 const dbRef = ref(database);
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { FeedbackFormData } from '../../../types';
+
 import GoBackButton from '@/components/GoBackButton.vue';
 import Spinner from '@/components/Spinner.vue';
 import DropdownSelector from './DropdownSelector.vue';
@@ -6,14 +8,6 @@ import DropdownSelector from './DropdownSelector.vue';
 import router from '../../../router';
 import { v4 as uuidv4 } from 'uuid';
 import { computed, ref } from 'vue';
-
-type FeedbackFormData = {
-  id: string;
-  title: string;
-  category: string;
-  status: string;
-  details: string;
-};
 
 const { title, isEdit, loading } = defineProps<{
   title: string;
