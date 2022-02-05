@@ -68,7 +68,7 @@ const vote = () => {
       class="flex items-center justify-center md:absolute md:right-8 md:bottom-8"
     >
       <div class="min-w-max">
-        <img class="w-5" src="../../assets/shared/icon-comments.svg" />
+        <img class="w-5" src="../../../assets/shared/icon-comments.svg" />
       </div>
       <div class="ml-3 text-lg font-bold">{{ feedback.comments.length }}</div>
     </div>

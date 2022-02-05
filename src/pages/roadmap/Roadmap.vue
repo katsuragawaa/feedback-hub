@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import RoadmapToolbar from '../components/roadmap-toolbar/RoadmapToolbar.vue';
-import RoadmapColumn from '../components/roadmap-column/RoadmapColumn.vue';
+import RoadmapToolbar from './roadmap-toolbar/RoadmapToolbar.vue';
+import RoadmapColumn from './roadmap-column/RoadmapColumn.vue';
 </script>
 
 <template>

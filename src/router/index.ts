@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../views/Home.vue';
-import Roadmap from '../views/Roadmap.vue';
-import Feedback from '../views/Feedback.vue';
-import NewFeedbackForm from '../views/NewFeedbackForm.vue';
+import Home from '../pages/home/Home.vue';
+import Roadmap from '../pages/roadmap/Roadmap.vue';
+import Feedback from '../pages/feedback/Feedback.vue';
+import NewFeedbackForm from '../pages/feedback/NewFeedbackForm.vue';
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'Home', component: Home },

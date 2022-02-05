@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { writeFeedbackData } from '../services/DatabaseService';
-import FeedbackForm from '../components/feedback-form/FeedbackForm.vue';
-import router from '../router';
+import FeedbackForm from './feedback-form/FeedbackForm.vue';
+
+import { writeFeedbackData } from '../../services/DatabaseService';
+import router from '../../router';
 import { ref } from 'vue';
 
 type FeedbackFormData = {

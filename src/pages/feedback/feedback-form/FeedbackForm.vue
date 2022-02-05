@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import GoBackButton from '../shared/GoBackButton.vue';
+import GoBackButton from '../../../components/GoBackButton.vue';
+import Spinner from '../../../components/Spinner.vue';
 import DropdownSelector from './DropdownSelector.vue';
+
+import router from '../../../router';
 import { v4 as uuidv4 } from 'uuid';
 import { computed, ref } from 'vue';
-import router from '../../router';
-import Spinner from '../shared/Spinner.vue';
 
 type FeedbackFormData = {
   id: string;
@@ -79,7 +80,7 @@ function saveFeedback() {
       >
         <div class="absolute left-11 -top-7 md:-top-5 md:w-10">
           <img
-            src="../../assets/shared/icon-new-feedback.svg"
+            src="../../../assets/shared/icon-new-feedback.svg"
             alt="New feedback icon"
           />
         </div>

@@ -1,11 +1,12 @@
 <script lang="ts">
-import MenuCards from '../components/menu-cards/MenuCards.vue';
-import FeedbackToolbar from '../components/feedback-toolbar/FeedbackToolbar.vue';
-import FeedbackList from '../components/feedback-list/FeedbackList.vue';
+import MenuCards from './menu-cards/MenuCards.vue';
+import FeedbackToolbar from './feedback-toolbar/FeedbackToolbar.vue';
+import FeedbackList from './feedback-list/FeedbackList.vue';
+import { readAllFeedbackData } from '../../services/DatabaseService';
+import Spinner from '../../components/Spinner.vue';
+
 import { defineComponent } from 'vue';
 import _ from 'lodash';
-import { readAllFeedbackData } from '../services/DatabaseService';
-import Spinner from '../components/shared/Spinner.vue';
 
 type SortBy = {
   title: string;
