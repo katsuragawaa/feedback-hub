@@ -40,12 +40,12 @@ const toggleSidebar = () => {
         <img
           v-if="sidebarOn"
           class="absolute h-full"
-          src="../../assets/shared/mobile/icon-close.svg"
+          src="../../../assets/shared/mobile/icon-close.svg"
         />
         <img
           v-else
           class="absolute h-full"
-          src="../../assets/shared/mobile/icon-hamburger.svg"
+          src="../../../assets/shared/mobile/icon-hamburger.svg"
         />
       </transition>
     </div>
