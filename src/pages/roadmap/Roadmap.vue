@@ -24,9 +24,8 @@ onMounted(async () => {
   const fetchedFeedbacksObject = await readAllFeedbackData();
   feedbacks.value = Object.values(fetchedFeedbacksObject);
   loading.value = false;
+  console.log(feedbacks.value);
 });
-
-console.log(feedbacks);
 </script>
 
 <template>
@@ -36,9 +35,9 @@ console.log(feedbacks);
     <RoadmapToolbar />
 
     <div v-if="!loading" class="mt-8 flex justify-between">
-      <RoadmapColumn />
-      <RoadmapColumn class="mx-10 md:mx-0" />
-      <RoadmapColumn />
+      <RoadmapColumn :feedbacks="feedbacks" />
+      <RoadmapColumn class="mx-10 md:mx-0" :feedbacks="feedbacks" />
+      <RoadmapColumn :feedbacks="feedbacks" />
     </div>
 
     <div v-else class="my-96 mx-auto w-28 text-purple-700">

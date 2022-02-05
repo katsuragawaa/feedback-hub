@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { Feedback } from '../../../types';
+
 import RoadmapFeedbackCard from './RoadmapFeedbackCard.vue';
+
+const { feedbacks } = defineProps<{
+  feedbacks?: Feedback[];
+}>();
 </script>
 
 <template>
