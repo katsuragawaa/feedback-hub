@@ -1,5 +1,5 @@
 import database from '../firebase';
-import { ref, set, get, child } from 'firebase/database';
+import { ref, set, get, child, onValue } from 'firebase/database';
 
 type FeedbackFormData = {
   id: string;
@@ -11,15 +11,15 @@ type FeedbackFormData = {
   comments: string[]; // TODO: setup comments type
 };
 
+const dbRef = ref(database);
+
 async function readAllFeedbackData() {
-  const dbRef = ref(database);
   const snapshot = await get(child(dbRef, 'feedbacks/'));
 
   return snapshot.exists() ? snapshot.val() : {};
 }
 
 function readFeedbackData(id: string) {
-  const dbRef = ref(database);
   get(child(dbRef, `feedbacks/${id}`))
     .then(snapshot => {
       if (snapshot.exists()) {

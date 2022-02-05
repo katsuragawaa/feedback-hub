@@ -2,9 +2,9 @@
 import MenuCards from './menu-cards/MenuCards.vue';
 import FeedbackToolbar from './feedback-toolbar/FeedbackToolbar.vue';
 import FeedbackList from './feedback-list/FeedbackList.vue';
-import { readAllFeedbackData } from '../../services/DatabaseService';
 import Spinner from '../../components/Spinner.vue';
 
+import { readAllFeedbackData } from '../../services/DatabaseService';
 import { defineComponent } from 'vue';
 import _ from 'lodash';
 
