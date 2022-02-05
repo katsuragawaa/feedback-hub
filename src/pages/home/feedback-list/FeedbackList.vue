@@ -1,17 +1,9 @@
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
-import FeedbackCard from './FeedbackCard.vue';
-import FeedbackEmpty from './FeedbackEmpty.vue';
+import { Feedback } from '../../../types';
 
-type Feedback = {
-  id: string;
-  title: string;
-  details: string;
-  category: string;
-  status: string;
-  votes: number;
-  comments: string[]; // TODO
-};
+import { defineComponent, PropType } from 'vue';
+import FeedbackCard from '../../../components/FeedbackCard.vue';
+import FeedbackEmpty from './FeedbackEmpty.vue';
 
 export default defineComponent({
   name: 'FeedbackList',
