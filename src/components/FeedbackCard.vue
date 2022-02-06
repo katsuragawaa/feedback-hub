@@ -64,7 +64,9 @@ const vote = () => {
       <div class="min-w-max">
         <img class="w-5" src="@/assets/shared/icon-comments.svg" />
       </div>
-      <div class="ml-3 text-lg font-bold">{{ feedback.comments.length }}</div>
+      <div class="ml-3 text-lg font-bold">
+        {{ feedback.comments?.length || 0 }}
+      </div>
     </div>
   </div>
 </template>
