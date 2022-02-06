@@ -4,6 +4,7 @@ import { Feedback } from '../../types';
 import GoBackButton from '@/components/GoBackButton.vue';
 import EditFeedbackButton from '@/components/EditFeedbackButton.vue';
 import FeedbackCard from '../../components/FeedbackCard.vue';
+import Spinner from '@/components/Spinner.vue';
 
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -32,7 +33,13 @@ onMounted(async () => {
         <GoBackButton textColor="gray-600" iconColor="#4661E6" />
         <EditFeedbackButton />
       </div>
-      <FeedbackCard v-if="!loading" :feedback="feedback" />
+      <div v-if="!loading" class="mt-8">
+        <FeedbackCard :feedback="feedback" />
+      </div>
+
+      <div v-else class="my-96 mx-auto w-28 text-purple-700">
+        <Spinner :size="28" />
+      </div>
     </div>
   </div>
 </template>
