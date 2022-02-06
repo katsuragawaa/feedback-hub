@@ -40,7 +40,7 @@ const color = computed(() => {
         </div>
 
         <div
-          class="mt-1 flex cursor-pointer flex-col duration-300 hover:text-blue-600"
+          class="mt-3 flex cursor-pointer flex-col duration-300 hover:text-blue-600"
         >
           <div class="text-base font-bold sm:text-lg">{{ feedback.title }}</div>
           <div class="mt-2 mb-4 text-sm text-gray-500 sm:text-base">
