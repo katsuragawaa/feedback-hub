@@ -10,12 +10,7 @@ const voted = ref(false);
 
 const vote = () => {
   voted.value = !voted.value;
-
-  if (voted.value) {
-    feedback.votes++;
-  } else {
-    feedback.votes--;
-  }
+  voted.value ? feedback.votes++ : feedback.votes--;
 };
 </script>
 
