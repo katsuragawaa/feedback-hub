@@ -6,13 +6,11 @@ const dbRef = ref(database);
 
 async function readAllFeedbackData() {
   const snapshot = await get(child(dbRef, 'feedbacks/'));
-
   return snapshot.exists() ? snapshot.val() : {};
 }
 
 async function readFeedbackData(id: string) {
   const snapshot = await get(child(dbRef, `feedbacks/${id}`));
-
   return snapshot.exists() ? snapshot.val() : {};
 }
 
