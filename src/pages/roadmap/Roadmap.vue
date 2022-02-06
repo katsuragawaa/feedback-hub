@@ -59,18 +59,39 @@ const statusColumns = computed(() => [
   >
     <RoadmapToolbar />
 
-    <div v-if="!loading" class="mt-8 flex justify-between">
-      <RoadmapColumn
-        v-for="column in statusColumns"
-        :feedbacks="column.feedbacks"
-        :title="column.title"
-        :description="column.description"
-        :class="column.customClass"
-      />
+    <div
+      class="hidden cursor-pointer items-center justify-between text-center text-sm text-gray-400 md:flex"
+    >
+      <div class="w-full">
+        <div class="my-3" :class="{ 'text-black': true }">Planned</div>
+        <div class="h-1" :class="{ 'bg-orange-400': true }"></div>
+      </div>
+      <div class="w-full text-center">
+        <div class="my-3">In progress</div>
+        <div class="h-1" :class="{ 'bg-orange-400': false }"></div>
+      </div>
+      <div class="w-full text-center">
+        <div class="my-3">Live</div>
+        <div class="h-1" :class="{ 'bg-orange-400': false }"></div>
+      </div>
     </div>
 
-    <div v-else class="my-96 mx-auto w-28 text-purple-700">
-      <Spinner :size="28" />
+    <div class="h-[1px] bg-gray-300"></div>
+
+    <div class="md:px-6">
+      <div v-if="!loading" class="mt-8 flex justify-between">
+        <RoadmapColumn
+          v-for="column in statusColumns"
+          :feedbacks="column.feedbacks"
+          :title="column.title"
+          :description="column.description"
+          :class="column.customClass"
+        />
+      </div>
+
+      <div v-else class="my-96 mx-auto w-28 text-purple-700">
+        <Spinner :size="28" />
+      </div>
     </div>
   </div>
 </template>
