@@ -1,18 +1,21 @@
 <script setup lang="ts">
+import { Feedback } from '../../types';
+
 import GoBackButton from '@/components/GoBackButton.vue';
 import EditFeedbackButton from '@/components/EditFeedbackButton.vue';
 import FeedbackCard from '../../components/FeedbackCard.vue';
 
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { readFeedbackData } from '../../services/DatabaseService';
 
 const route = useRoute();
 
+const feedback = ref({} as Feedback);
+
 onMounted(async () => {
   const feedbackId = route.params.id;
-  const feedback = await readFeedbackData(feedbackId as string);
-  console.log(feedback);
+  feedback.value = await readFeedbackData(feedbackId as string);
 });
 </script>
 
