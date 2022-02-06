@@ -38,17 +38,20 @@ const statusColumns = computed(() => [
     title: 'Planned',
     description: 'Ideas prioritized for research',
     feedbacks: plannedFeedbacks.value,
+    tabColor: 'bg-orange-400',
   },
   {
     title: 'In progress',
     description: 'Currently being developed',
     feedbacks: inProgressFeedbacks.value,
     customClass: 'mx-4 md:mx-0',
+    tabColor: 'bg-purple-400',
   },
   {
     title: 'Live',
     description: 'Released features',
     feedbacks: liveFeedbacks.value,
+    tabColor: 'bg-blue-400',
   },
 ]);
 </script>
@@ -62,17 +65,11 @@ const statusColumns = computed(() => [
     <div
       class="hidden cursor-pointer items-center justify-between text-center text-sm text-gray-400 md:flex"
     >
-      <div class="w-full">
-        <div class="my-3" :class="{ 'text-black': true }">Planned</div>
-        <div class="h-1" :class="{ 'bg-orange-400': true }"></div>
-      </div>
-      <div class="w-full text-center">
-        <div class="my-3">In progress</div>
-        <div class="h-1" :class="{ 'bg-orange-400': false }"></div>
-      </div>
-      <div class="w-full text-center">
-        <div class="my-3">Live</div>
-        <div class="h-1" :class="{ 'bg-orange-400': false }"></div>
+      <div class="w-full" v-for="column in statusColumns">
+        <div class="my-3" :class="{ 'text-black': true }">
+          {{ column.title }}
+        </div>
+        <div class="h-1" :class="column.tabColor"></div>
       </div>
     </div>
 
