@@ -11,7 +11,7 @@ import _ from 'lodash';
 
 const loading = ref(false);
 const feedbacks = ref([] as Feedback[]);
-const selectedTab = ref('Planned');
+const currentTab = ref('Planned');
 
 onMounted(async () => {
   loading.value = true;
@@ -57,7 +57,7 @@ const statusColumns = computed(() => [
 ]);
 
 function changeTab(column: string) {
-  selectedTab.value = column;
+  currentTab.value = column;
 }
 </script>
 
@@ -79,7 +79,7 @@ function changeTab(column: string) {
           {{ column.title }}
         </div>
         <div
-          v-if="column.title == selectedTab"
+          v-if="column.title == currentTab"
           class="h-1"
           :class="column.tabColor"
         ></div>
