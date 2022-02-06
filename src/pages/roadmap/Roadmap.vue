@@ -32,6 +32,25 @@ const inProgressFeedbacks = computed(() =>
 const liveFeedbacks = computed(() =>
   _.filter(feedbacks.value, { status: 'Live' })
 );
+
+const statusColumns = computed(() => [
+  {
+    title: 'Planned',
+    description: 'Ideas prioritized for research',
+    feedbacks: plannedFeedbacks.value,
+  },
+  {
+    title: 'In progress',
+    description: 'Currently being developed',
+    feedbacks: inProgressFeedbacks.value,
+    customClass: 'mx-10 md:mx-0',
+  },
+  {
+    title: 'Live',
+    description: 'Released features',
+    feedbacks: liveFeedbacks.value,
+  },
+]);
 </script>
 
 <template>
@@ -41,9 +60,11 @@ const liveFeedbacks = computed(() =>
     <RoadmapToolbar />
 
     <div v-if="!loading" class="mt-8 flex justify-between">
-      <RoadmapColumn :feedbacks="plannedFeedbacks" />
-      <RoadmapColumn class="mx-10 md:mx-0" :feedbacks="inProgressFeedbacks" />
-      <RoadmapColumn :feedbacks="liveFeedbacks" />
+      <RoadmapColumn
+        v-for="column in statusColumns"
+        :feedbacks="column.feedbacks"
+        :class="column.customClass"
+      />
     </div>
 
     <div v-else class="my-96 mx-auto w-28 text-purple-700">
