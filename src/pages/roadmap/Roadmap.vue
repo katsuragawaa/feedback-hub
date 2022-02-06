@@ -6,7 +6,8 @@ import RoadmapColumn from './roadmap-column/RoadmapColumn.vue';
 import Spinner from '@/components/Spinner.vue';
 
 import { readAllFeedbackData } from '../../services/DatabaseService';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+import _ from 'lodash';
 
 const loading = ref(false);
 const feedbacks = ref([] as Feedback[]);
@@ -16,8 +17,21 @@ onMounted(async () => {
   const fetchedFeedbacksObject = await readAllFeedbackData();
   feedbacks.value = Object.values(fetchedFeedbacksObject);
   loading.value = false;
-  console.log(feedbacks.value);
 });
+
+const plannedFeedbacks = computed(() =>
+  _.filter(feedbacks.value, { status: 'Planned' })
+);
+
+const inProgressFeedbacks = computed(() =>
+  _.filter(feedbacks.value, {
+    status: 'In progress',
+  })
+);
+
+const liveFeedbacks = computed(() =>
+  _.filter(feedbacks.value, { status: 'Live' })
+);
 </script>
 
 <template>
@@ -27,9 +41,9 @@ onMounted(async () => {
     <RoadmapToolbar />
 
     <div v-if="!loading" class="mt-8 flex justify-between">
-      <RoadmapColumn :feedbacks="feedbacks" />
-      <RoadmapColumn class="mx-10 md:mx-0" :feedbacks="feedbacks" />
-      <RoadmapColumn :feedbacks="feedbacks" />
+      <RoadmapColumn :feedbacks="plannedFeedbacks" />
+      <RoadmapColumn class="mx-10 md:mx-0" :feedbacks="inProgressFeedbacks" />
+      <RoadmapColumn :feedbacks="liveFeedbacks" />
     </div>
 
     <div v-else class="my-96 mx-auto w-28 text-purple-700">

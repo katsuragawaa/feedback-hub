@@ -4,7 +4,7 @@ import { Feedback } from '../../../types';
 import RoadmapFeedbackCard from './RoadmapFeedbackCard.vue';
 
 const { feedbacks } = defineProps<{
-  feedbacks?: Feedback[];
+  feedbacks: Feedback[];
 }>();
 </script>
 
@@ -15,7 +15,7 @@ const { feedbacks } = defineProps<{
       <div class="mb-6 text-gray-600">Section description</div>
     </div>
     <div class="flex flex-col">
-      <RoadmapFeedbackCard />
+      <RoadmapFeedbackCard :feedback="feedbacks[0]" />
     </div>
   </div>
 </template>
