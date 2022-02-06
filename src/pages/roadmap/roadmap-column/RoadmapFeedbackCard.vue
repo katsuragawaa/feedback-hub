@@ -20,7 +20,7 @@ const color = computed(() => {
     case 'In progress':
       return 'bg-purple-400';
     case 'Live':
-      return 'bg-sky-400';
+      return 'bg-blue-400';
   }
 });
 </script>
