@@ -10,18 +10,10 @@ async function readAllFeedbackData() {
   return snapshot.exists() ? snapshot.val() : {};
 }
 
-function readFeedbackData(id: string) {
-  get(child(dbRef, `feedbacks/${id}`))
-    .then(snapshot => {
-      if (snapshot.exists()) {
-        console.log(snapshot.val());
-      } else {
-        console.log('No data available');
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
+async function readFeedbackData(id: string) {
+  const snapshot = await get(child(dbRef, `feedbacks/${id}`));
+
+  return snapshot.exists() ? snapshot.val() : {};
 }
 
 function writeFeedbackData(feedback: FeedbackFormData) {
