@@ -63,6 +63,8 @@ const statusColumns = computed(() => [
       <RoadmapColumn
         v-for="column in statusColumns"
         :feedbacks="column.feedbacks"
+        :title="column.title"
+        :description="column.description"
         :class="column.customClass"
       />
     </div>
