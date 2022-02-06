@@ -11,6 +11,7 @@ import _ from 'lodash';
 
 const loading = ref(false);
 const feedbacks = ref([] as Feedback[]);
+const selectedTab = ref('Planned');
 
 onMounted(async () => {
   loading.value = true;
@@ -54,6 +55,10 @@ const statusColumns = computed(() => [
     tabColor: 'bg-blue-400',
   },
 ]);
+
+function changeTab(column: string) {
+  selectedTab.value = column;
+}
 </script>
 
 <template>
@@ -65,11 +70,19 @@ const statusColumns = computed(() => [
     <div
       class="hidden cursor-pointer items-center justify-between text-center text-sm text-gray-400 md:flex"
     >
-      <div class="w-full" v-for="column in statusColumns">
+      <div
+        class="w-full"
+        v-for="column in statusColumns"
+        @click="() => changeTab(column.title)"
+      >
         <div class="my-3" :class="{ 'text-black': true }">
           {{ column.title }}
         </div>
-        <div class="h-1" :class="column.tabColor"></div>
+        <div
+          v-if="column.title == selectedTab"
+          class="h-1"
+          :class="column.tabColor"
+        ></div>
       </div>
     </div>
 
