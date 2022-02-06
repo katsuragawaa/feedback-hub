@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { Feedback } from '../../../types';
 
 const { feedback } = defineProps<{
@@ -12,15 +12,35 @@ const vote = () => {
   voted.value = !voted.value;
   voted.value ? feedback.votes++ : feedback.votes--;
 };
+
+const color = computed(() => {
+  switch (feedback.status) {
+    case 'Planned':
+      return 'bg-orange-400';
+    case 'In progress':
+      return 'bg-purple-400';
+    case 'Live':
+      return 'bg-sky-400';
+  }
+});
 </script>
 
 <template>
-  <div class="h-2 w-full rounded-t-lg bg-purple-600"></div>
+  <div class="h-2 w-full rounded-t-lg" :class="color"></div>
   <div class="mb-4 flex flex-col rounded-b-lg bg-white p-6">
     <div class="flex flex-col items-start">
       <div>
+        <div class="flex items-center text-sm text-gray-600">
+          <div class="mr-2 flex w-4">
+            <div class="h-2 w-2 rounded-full" :class="color"></div>
+          </div>
+          <div>
+            {{ feedback.status }}
+          </div>
+        </div>
+
         <div
-          class="flex cursor-pointer flex-col duration-300 hover:text-blue-600"
+          class="mt-1 flex cursor-pointer flex-col duration-300 hover:text-blue-600"
         >
           <div class="text-base font-bold sm:text-lg">{{ feedback.title }}</div>
           <div class="mt-2 mb-4 text-sm text-gray-500 sm:text-base">
