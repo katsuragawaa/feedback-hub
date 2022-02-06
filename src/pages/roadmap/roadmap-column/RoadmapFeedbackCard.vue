@@ -82,7 +82,7 @@ const color = computed(() => {
               <img class="w-5" src="@/assets/shared/icon-comments.svg" />
             </div>
             <div class="ml-3 text-lg font-bold">
-              {{ feedback.comments.length }}
+              {{ feedback.comments?.length || 0 }}
             </div>
           </div>
         </div>
