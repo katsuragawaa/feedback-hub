@@ -5,6 +5,8 @@ import GoBackButton from '@/components/GoBackButton.vue';
 import EditFeedbackButton from '@/components/EditFeedbackButton.vue';
 import FeedbackCard from '../../components/FeedbackCard.vue';
 import Spinner from '@/components/Spinner.vue';
+import CommentList from './comment-list/CommentList.vue';
+import CommentForm from './comment-form/CommentForm.vue';
 
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
@@ -33,8 +35,10 @@ onMounted(async () => {
         <GoBackButton textColor="gray-600" iconColor="#4661E6" />
         <EditFeedbackButton />
       </div>
-      <div v-if="!loading" class="mt-8">
+      <div v-if="!loading" class="mt-8 flex flex-col">
         <FeedbackCard :feedback="feedback" />
+        <CommentList />
+        <CommentForm />
       </div>
 
       <div v-else class="my-96 mx-auto w-28 text-purple-700">
