@@ -88,8 +88,8 @@ function changeTab(columnIndex: number) {
 
     <div class="h-[1px] bg-gray-300"></div>
 
-    <div class="hidden md:flex">
-      <div v-if="!loading" class="mt-8 flex justify-between">
+    <div class="mx-6 hidden md:flex">
+      <div v-if="!loading" class="mt-8 flex w-full justify-between">
         <RoadmapColumn
           :feedbacks="statusColumns[currentTab].feedbacks"
           :title="statusColumns[currentTab].title"
