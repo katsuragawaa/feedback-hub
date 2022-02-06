@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Feedback } from '../../../types';
+import router from '../../../router';
 
 import { defineComponent, PropType } from 'vue';
 import FeedbackCard from '@/components/FeedbackCard.vue';
@@ -25,6 +26,14 @@ export default defineComponent({
       default: false,
     },
   },
+  methods: {
+    goToFeedbackDetails(feedback: Feedback) {
+      router.push({
+        name: 'FeedbackDetails',
+        params: { id: feedback.id },
+      });
+    },
+  },
 });
 </script>
 
@@ -36,6 +45,7 @@ export default defineComponent({
         :key="feedback.id"
         :feedback="feedback"
         class="transition duration-500"
+        @click="goToFeedbackDetails(feedback)"
       />
     </transition-group>
     <FeedbackEmpty

@@ -3,6 +3,7 @@ import Home from '@/pages/home/Home.vue';
 import Roadmap from '@/pages/roadmap/Roadmap.vue';
 import Feedback from '@/pages/feedback/Feedback.vue';
 import NewFeedbackForm from '@/pages/feedback/NewFeedbackForm.vue';
+import FeedbackDetails from '@/pages/feedback/FeedbackDetails.vue';
 
 const routes: RouteRecordRaw[] = [
   { path: '/', name: 'Home', component: Home },
@@ -14,6 +15,11 @@ const routes: RouteRecordRaw[] = [
     redirect: '/',
     children: [
       { path: 'new', name: 'NewFeedbackForm', component: NewFeedbackForm },
+      {
+        path: 'details/:id',
+        name: 'FeedbackDetails',
+        component: FeedbackDetails,
+      },
     ],
   },
 ];
