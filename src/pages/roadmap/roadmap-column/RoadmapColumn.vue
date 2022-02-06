@@ -15,7 +15,7 @@ const { feedbacks } = defineProps<{
       <div class="mb-6 text-gray-600">Section description</div>
     </div>
     <div class="flex flex-col">
-      <RoadmapFeedbackCard :feedback="feedbacks[0]" />
+      <RoadmapFeedbackCard v-for="feedback in feedbacks" :feedback="feedback" />
     </div>
   </div>
 </template>
