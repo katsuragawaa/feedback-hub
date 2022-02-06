@@ -43,7 +43,7 @@ const statusColumns = computed(() => [
     title: 'In progress',
     description: 'Currently being developed',
     feedbacks: inProgressFeedbacks.value,
-    customClass: 'mx-10 md:mx-0',
+    customClass: 'mx-4 md:mx-0',
   },
   {
     title: 'Live',
