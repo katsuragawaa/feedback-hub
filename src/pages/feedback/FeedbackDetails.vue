@@ -11,11 +11,15 @@ import { readFeedbackData } from '../../services/DatabaseService';
 
 const route = useRoute();
 
+const loading = ref(false);
 const feedback = ref({} as Feedback);
 
 onMounted(async () => {
+  loading.value = true;
   const feedbackId = route.params.id;
   feedback.value = await readFeedbackData(feedbackId as string);
+  console.log(feedback.value, loading.value);
+  loading.value = false;
 });
 </script>
 
@@ -28,7 +32,7 @@ onMounted(async () => {
         <GoBackButton textColor="gray-600" iconColor="#4661E6" />
         <EditFeedbackButton />
       </div>
-      <!-- <FeedbackCard /> -->
+      <FeedbackCard v-if="!loading" :feedback="feedback" />
     </div>
   </div>
 </template>
