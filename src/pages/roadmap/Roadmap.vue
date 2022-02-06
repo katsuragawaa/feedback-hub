@@ -11,7 +11,7 @@ import _ from 'lodash';
 
 const loading = ref(false);
 const feedbacks = ref([] as Feedback[]);
-const currentTab = ref('Planned');
+const currentTab = ref(0);
 
 onMounted(async () => {
   loading.value = true;
@@ -56,8 +56,8 @@ const statusColumns = computed(() => [
   },
 ]);
 
-function changeTab(column: string) {
-  currentTab.value = column;
+function changeTab(columnIndex: number) {
+  currentTab.value = columnIndex;
 }
 </script>
 
@@ -72,14 +72,14 @@ function changeTab(column: string) {
     >
       <div
         class="w-full"
-        v-for="column in statusColumns"
-        @click="() => changeTab(column.title)"
+        v-for="(column, index) in statusColumns"
+        @click="() => changeTab(index)"
       >
         <div class="my-3" :class="{ 'text-black': true }">
           {{ column.title }}
         </div>
         <div
-          v-if="column.title == currentTab"
+          v-if="index == currentTab"
           class="h-1"
           :class="column.tabColor"
         ></div>
@@ -88,7 +88,21 @@ function changeTab(column: string) {
 
     <div class="h-[1px] bg-gray-300"></div>
 
-    <div class="md:px-6">
+    <div class="hidden md:flex">
+      <div v-if="!loading" class="mt-8 flex justify-between">
+        <RoadmapColumn
+          :feedbacks="statusColumns[currentTab].feedbacks"
+          :title="statusColumns[currentTab].title"
+          :description="statusColumns[currentTab].description"
+          :class="statusColumns[currentTab].customClass"
+        />
+      </div>
+      <div v-else class="my-96 mx-auto w-28 text-purple-700">
+        <Spinner :size="28" />
+      </div>
+    </div>
+
+    <div class="md:hidden">
       <div v-if="!loading" class="mt-8 flex justify-between">
         <RoadmapColumn
           v-for="column in statusColumns"
