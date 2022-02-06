@@ -95,6 +95,7 @@ function changeTab(columnIndex: number) {
           :title="statusColumns[currentTab].title"
           :description="statusColumns[currentTab].description"
           :class="statusColumns[currentTab].customClass"
+          :key="currentTab"
         />
       </div>
       <div v-else class="my-96 mx-auto w-28 text-purple-700">
