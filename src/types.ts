@@ -28,5 +28,7 @@ export type SortBy = {
 export type Comment = {
   id: string;
   author: string;
+  avatar: string;
+  email: string;
   content: string;
 }
