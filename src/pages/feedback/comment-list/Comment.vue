@@ -25,9 +25,12 @@ const { comment } = defineProps<{
       />
     </div>
     <div class="ml-6 flex flex-col">
-      <div class="flex items-center justify-between font-bold">
-        <div>{{ comment.author }}</div>
-        <div>Reply</div>
+      <div class="flex justify-between">
+        <div>
+          <div class="font-bold">{{ comment.author }}</div>
+          <div class="mt-1 text-xs">{{ comment.email }}</div>
+        </div>
+        <div class="font-bold">Reply</div>
       </div>
       <div class="mt-4" :class="{ 'mb-8': drawBorder }">
         {{ comment.content }}
