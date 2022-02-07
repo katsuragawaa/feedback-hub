@@ -7,27 +7,19 @@ const { comment } = defineProps<{
   drawBorder: boolean;
 }>();
 
-const user = ref({});
-const pictureUrl = ref('');
-const loading = ref(false);
-
-onMounted(async () => {
-  loading.value = true;
-  const response = await fetch('https://randomuser.me/api/');
-  const data = await response.json();
-  const randomPerson = data.results[0];
-  console.log(randomPerson);
-  pictureUrl.value = randomPerson.picture.medium;
-  loading.value = false;
-});
+// onMounted(async () => {
+//   const response = await fetch('https://randomuser.me/api/');
+//   const data = await response.json();
+//   const randomPerson = data.results[0];
+//   console.log(randomPerson);
+// });
 </script>
 
 <template>
   <div class="flex pt-8 text-sm" :class="{ 'border-b': drawBorder }">
     <div class="h-10 w-10 flex-none rounded-full bg-gray-100">
       <img
-        v-if="!loading"
-        :src="pictureUrl"
+        :src="comment.avatar"
         alt="Avatar"
         class="h-full w-full rounded-full"
       />

@@ -7,24 +7,24 @@ const dummyComments = [
     author: 'Johnny Walker',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin, nisi id mollis pulvinar, ante turpis ultricies tortor, eget porttitor orci est sit amet urna. Aliquam non tortor rhoncus, congue turpis sit amet, aliquam sem.',
+    email: 'phillip.stanley@example.com',
+    avatar: 'https://randomuser.me/api/portraits/med/men/88.jpg',
   },
   {
     id: '2',
     author: 'John Doe',
     content:
       'Nam vitae cursus sapien. Nam eu dapibus orci. Nulla ultricies mi leo, eu ultrices turpis tempor ac.',
+    email: 'phillip.stanley@example.com',
+    avatar: 'https://randomuser.me/api/portraits/med/men/88.jpg',
   },
   {
     id: '3',
     author: 'Johnny Walker',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin, nisi id mollis pulvinar, ante turpis ultricies tortor, eget porttitor orci est sit amet urna. Aliquam non tortor rhoncus, congue turpis sit amet, aliquam sem.',
-  },
-  {
-    id: '4',
-    author: 'John Doe',
-    content:
-      'Nam vitae cursus sapien. Nam eu dapibus orci. Nulla ultricies mi leo, eu ultrices turpis tempor ac.',
+    email: 'mrym.khmrw@example.com',
+    avatar: 'https://randomuser.me/api/portraits/med/men/85.jpg',
   },
 ];
 
