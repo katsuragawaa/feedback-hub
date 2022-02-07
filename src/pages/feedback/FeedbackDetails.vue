@@ -36,7 +36,7 @@ onMounted(async () => {
         <EditFeedbackButton />
       </div>
       <div v-if="!loading" class="mt-8 flex flex-col">
-        <FeedbackCard :feedback="feedback" />
+        <FeedbackCard :feedback="feedback" :clickable="false" />
         <CommentList />
         <CommentForm />
       </div>

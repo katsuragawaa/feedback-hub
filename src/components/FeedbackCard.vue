@@ -2,9 +2,16 @@
 import { ref } from 'vue';
 import { Feedback } from '../types';
 
-const { feedback } = defineProps<{
-  feedback: Feedback;
-}>();
+const { feedback, clickable } = defineProps({
+  feedback: {
+    type: Object,
+    required: true,
+  },
+  clickable: {
+    type: Boolean,
+    default: true,
+  },
+});
 
 const voted = ref(false);
 
@@ -45,7 +52,8 @@ const vote = () => {
         <div class="text-sm font-bold md:ml-3">{{ feedback.votes }}</div>
       </div>
       <div
-        class="mx-10 flex cursor-pointer flex-col duration-300 hover:text-blue-600 md:m-0"
+        class="mx-10 flex flex-col duration-300 md:m-0"
+        :class="{ 'cursor-pointer hover:text-blue-600': clickable }"
       >
         <div class="text-base font-bold sm:text-lg">{{ feedback.title }}</div>
         <div class="mt-2 mb-4 text-sm text-gray-500 sm:text-base">
