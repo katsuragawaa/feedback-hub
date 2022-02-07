@@ -4,18 +4,8 @@ export type Feedback = {
   details: string;
   category: string;
   status: string;
-  votes: number;
-  comments: string[]; // TODO
-};
-
-export type FeedbackFormData = {
-  id: string;
-  title: string;
-  category: string;
-  status: string;
-  details: string;
-  votes?: number;
-  comments?: string[]; // TODO: setup comments type
+  votesCount?: number;
+  commentsCount?: number;
 };
 
 export type SortBy = {
@@ -27,8 +17,9 @@ export type SortBy = {
 
 export type Comment = {
   id: string;
+  feedbackId: string;
   author: string;
   avatar: string;
   email: string;
   content: string;
-}
+};

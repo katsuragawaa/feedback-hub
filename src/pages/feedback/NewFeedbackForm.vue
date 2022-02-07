@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FeedbackFormData } from '../../types';
+import { Feedback } from '../../types';
 
 import FeedbackForm from './feedback-form/FeedbackForm.vue';
 
@@ -9,7 +9,7 @@ import { ref } from 'vue';
 
 const loading = ref(false);
 
-function saveFeedback(feedback: FeedbackFormData) {
+function saveFeedback(feedback: Feedback) {
   loading.value = true;
 
   setTimeout(() => {
