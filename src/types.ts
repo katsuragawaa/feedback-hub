@@ -24,3 +24,9 @@ export type SortBy = {
   key: string;
   order: string;
 };
+
+export type Comment = {
+  id: string;
+  author: string;
+  content: string;
+}
