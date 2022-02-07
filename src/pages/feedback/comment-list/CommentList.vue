@@ -14,7 +14,21 @@ const dummyComments = [
     content:
       'Nam vitae cursus sapien. Nam eu dapibus orci. Nulla ultricies mi leo, eu ultrices turpis tempor ac.',
   },
+  {
+    id: '3',
+    author: 'Johnny Walker',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin, nisi id mollis pulvinar, ante turpis ultricies tortor, eget porttitor orci est sit amet urna. Aliquam non tortor rhoncus, congue turpis sit amet, aliquam sem.',
+  },
+  {
+    id: '4',
+    author: 'John Doe',
+    content:
+      'Nam vitae cursus sapien. Nam eu dapibus orci. Nulla ultricies mi leo, eu ultrices turpis tempor ac.',
+  },
 ];
+
+const shouldDrawBorder = (index: number) => dummyComments.length - 1 !== index;
 </script>
 
 <template>
@@ -22,9 +36,10 @@ const dummyComments = [
     <div class="font-bold">2 Comments</div>
 
     <Comment
-      v-for="comment in dummyComments"
+      v-for="(comment, index) in dummyComments"
       :comment="comment"
       :key="comment.id"
+      :drawBorder="shouldDrawBorder(index)"
     />
   </div>
 </template>
