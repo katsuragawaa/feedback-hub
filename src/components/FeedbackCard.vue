@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import router from '../router';
 import { Feedback } from '../types';
+import { PropType, ref } from 'vue';
+import router from '../router';
 
 const { feedback, clickable } = defineProps({
   feedback: {
-    type: Object,
+    type: Object as PropType<Feedback>,
     required: true,
   },
   clickable: {
@@ -18,6 +18,8 @@ const voted = ref(false);
 
 const vote = () => {
   voted.value = !voted.value;
+
+  if (!feedback || !feedback.votesCount) return; // TODO: remove after cleaning type
 
   if (voted.value) {
     feedback.votesCount++;
