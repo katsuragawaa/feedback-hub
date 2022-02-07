@@ -21,6 +21,10 @@ const dummyComments = [
   <div class="rounded-lg bg-white p-8">
     <div class="font-bold">2 Comments</div>
 
-    <Comment v-for="comment in dummyComments" :comment="comment" />
+    <Comment
+      v-for="comment in dummyComments"
+      :comment="comment"
+      :key="comment.id"
+    />
   </div>
 </template>

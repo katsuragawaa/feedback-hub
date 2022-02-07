@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Comment } from '../../../types';
 
-const props = defineProps<{
+const { comment } = defineProps<{
   comment: Comment;
 }>();
 </script>
@@ -12,13 +12,10 @@ const props = defineProps<{
 
     <div class="ml-6 flex flex-col">
       <div class="flex items-center justify-between font-bold">
-        <div>John Doe</div>
+        <div>{{ comment.author }}</div>
         <div>Reply</div>
       </div>
-      <div class="mt-4">
-        This would be awesome! It would be so helpful to see an overview of my
-        code in a way that makes it easy to spot where things could be improved.
-      </div>
+      <div class="mt-4">{{ comment.content }}</div>
     </div>
   </div>
 </template>
