@@ -26,14 +26,6 @@ export default defineComponent({
       default: false,
     },
   },
-  methods: {
-    goToFeedbackDetails(feedback: Feedback) {
-      router.push({
-        name: 'FeedbackDetails',
-        params: { id: feedback.id },
-      });
-    },
-  },
 });
 </script>
 
@@ -45,7 +37,6 @@ export default defineComponent({
         :key="feedback.id"
         :feedback="feedback"
         class="transition duration-500"
-        @click="goToFeedbackDetails(feedback)"
       />
     </transition-group>
     <FeedbackEmpty

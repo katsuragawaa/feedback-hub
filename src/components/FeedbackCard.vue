@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import router from '../router';
 import { Feedback } from '../types';
 
 const { feedback, clickable } = defineProps({
@@ -24,6 +25,13 @@ const vote = () => {
     feedback.votesCount--;
   }
 };
+
+function goToFeedbackDetails() {
+  router.push({
+    name: 'FeedbackDetails',
+    params: { id: feedback.id },
+  });
+}
 </script>
 
 <template>
@@ -54,6 +62,7 @@ const vote = () => {
       <div
         class="mx-10 flex flex-col duration-300 md:m-0"
         :class="{ 'cursor-pointer hover:text-blue-600': clickable }"
+        @click="goToFeedbackDetails"
       >
         <div class="text-base font-bold sm:text-lg">{{ feedback.title }}</div>
         <div class="mt-2 mb-4 text-sm text-gray-500 sm:text-base">
