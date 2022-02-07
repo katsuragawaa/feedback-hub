@@ -15,8 +15,8 @@ function saveFeedback(feedback: Feedback) {
   setTimeout(() => {
     writeFeedbackData({
       ...feedback,
-      votes: 0,
-      comments: ['Comment 1', 'Comment 2'],
+      votesCount: 0,
+      commentsCount: 0,
     });
     loading.value = false;
     router.push({ name: 'Home' });

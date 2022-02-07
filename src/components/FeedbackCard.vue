@@ -19,9 +19,9 @@ const vote = () => {
   voted.value = !voted.value;
 
   if (voted.value) {
-    feedback.votes++;
+    feedback.votesCount++;
   } else {
-    feedback.votes--;
+    feedback.votesCount--;
   }
 };
 </script>
@@ -49,7 +49,7 @@ const vote = () => {
             fill-rule="evenodd"
           />
         </svg>
-        <div class="text-sm font-bold md:ml-3">{{ feedback.votes }}</div>
+        <div class="text-sm font-bold md:ml-3">{{ feedback.votesCount }}</div>
       </div>
       <div
         class="mx-10 flex flex-col duration-300 md:m-0"
@@ -73,7 +73,7 @@ const vote = () => {
         <img class="w-5" src="@/assets/shared/icon-comments.svg" />
       </div>
       <div class="ml-3 text-lg font-bold">
-        {{ feedback.comments?.length || 0 }}
+        {{ feedback.commentsCount }}
       </div>
     </div>
   </div>
