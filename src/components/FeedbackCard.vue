@@ -40,7 +40,7 @@ function goToFeedbackDetails() {
   <div class="mb-4 flex justify-between rounded-xl bg-white p-8 md:relative">
     <div class="flex md:flex-col md:items-start">
       <div
-        class="flex h-14 w-11 cursor-pointer flex-col items-center justify-between rounded-lg bg-blue-600 py-3 px-2 duration-200 md:order-1 md:mt-4 md:h-fit md:w-fit md:flex-row md:py-2 md:px-4"
+        class="flex h-14 w-11 flex-none cursor-pointer flex-col items-center justify-between rounded-lg bg-blue-600 py-3 px-2 duration-200 md:order-1 md:mt-4 md:h-fit md:w-fit md:flex-row md:py-2 md:px-4"
         :class="voted ? 'bg-opacity-100 text-white' : 'bg-opacity-10'"
         @click="vote"
       >
