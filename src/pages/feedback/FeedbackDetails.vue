@@ -21,7 +21,6 @@ onMounted(async () => {
   loading.value = true;
   const feedbackId = route.params.id;
   feedback.value = await readFeedbackData(feedbackId as string);
-  console.log(feedback.value, loading.value);
   loading.value = false;
 });
 </script>
