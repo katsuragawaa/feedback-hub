@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { Comment } from '../../../types';
+
+const props = defineProps<{
+  comment: Comment;
+}>();
+</script>
+
 <template>
   <div class="flex pt-8 text-sm">
     <div class="h-10 w-10 flex-none rounded-full bg-slate-400"></div>
