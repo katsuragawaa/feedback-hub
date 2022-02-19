@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { Feedback } from '../../types';
+import { Feedback } from '../../../types';
 
 import GoBackButton from '@/components/GoBackButton.vue';
 import EditFeedbackButton from '@/components/EditFeedbackButton.vue';
-import FeedbackCard from '../../components/FeedbackCard.vue';
+import FeedbackCard from '@/components/FeedbackCard.vue';
 import Spinner from '@/components/Spinner.vue';
 import CommentList from './comment-list/CommentList.vue';
 import CommentForm from './comment-form/CommentForm.vue';
 
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { readFeedbackData } from '../../services/DatabaseService';
+import { readFeedbackData } from '../../../services/DatabaseService';
 
 const route = useRoute();
 
