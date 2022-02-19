@@ -43,9 +43,8 @@ export default defineComponent({
   computed: {
     filteredFeedbacks(): Feedback[] {
       const filter = this.selectedFilter || 'All';
-      if (filter === 'All') {
-        return this.feedbacks;
-      }
+      if (filter === 'All') return this.feedbacks;
+
       return this.feedbacks.filter(feedback => feedback.category === filter);
     },
   },

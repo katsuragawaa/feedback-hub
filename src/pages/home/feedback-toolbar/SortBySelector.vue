@@ -7,10 +7,10 @@ const emit = defineEmits<{
 }>();
 
 const sortOptions = [
-  { title: 'Most Upvotes', index: 0, key: 'votes', order: 'desc' },
-  { title: 'Least Upvotes', index: 1, key: 'votes', order: 'asc' },
-  { title: 'Most Comments', index: 2, key: 'comments', order: 'desc' },
-  { title: 'Least Comments', index: 3, key: 'comments', order: 'asc' },
+  { title: 'Most Upvotes', index: 0, key: 'votesCount', order: 'desc' },
+  { title: 'Least Upvotes', index: 1, key: 'votesCount', order: 'asc' },
+  { title: 'Most Comments', index: 2, key: 'commentsCount', order: 'desc' },
+  { title: 'Least Comments', index: 3, key: 'commentsCount', order: 'asc' },
 ];
 
 const selectedOption = ref(sortOptions[0]);
@@ -25,7 +25,7 @@ const selectOption = (option: SortBy) => {
 
 <template>
   <!-- component -->
-  <!-- 
+  <!--
     =======================================================================
     Name    :   Pure CSS Dropdown Menu
     Author  :   Surjith S M

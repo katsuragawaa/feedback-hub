@@ -10,7 +10,10 @@ const voted = ref(false);
 
 const vote = () => {
   voted.value = !voted.value;
-  voted.value ? feedback.votes++ : feedback.votes--;
+
+  if (!feedback || !feedback.votesCount) return; // TODO: remove after cleaning type
+
+  feedback.votesCount += voted.value ? 1 : -1;
 };
 
 const color = computed(() => {
@@ -74,7 +77,7 @@ const color = computed(() => {
                 fill-rule="evenodd"
               />
             </svg>
-            <div class="ml-3 text-sm font-bold">{{ feedback.votes }}</div>
+            <div class="ml-3 text-sm font-bold">{{ feedback.votesCount }}</div>
           </div>
 
           <div class="flex items-center">
@@ -82,7 +85,7 @@ const color = computed(() => {
               <img class="w-5" src="@/assets/shared/icon-comments.svg" />
             </div>
             <div class="ml-3 text-lg font-bold">
-              {{ feedback.comments?.length || 0 }}
+              {{ feedback.commentsCount }}
             </div>
           </div>
         </div>
