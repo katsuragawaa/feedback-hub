@@ -8,7 +8,7 @@ import {
   query,
   orderByChild,
 } from 'firebase/database';
-import { Feedback } from '../types';
+import { FeedbackType, CommentType } from '../types';
 
 const dbRef = ref(database);
 
@@ -31,8 +31,17 @@ async function readFeedbackData(id: string) {
   return snapshot.exists() ? snapshot.val() : {};
 }
 
-function writeFeedbackData(feedback: Feedback) {
+function writeFeedbackData(feedback: FeedbackType) {
   set(ref(database, 'feedbacks/' + feedback.id), feedback);
 }
 
-export { readAllFeedbackData, readFeedbackData, writeFeedbackData };
+function writeCommentData(comment: CommentType) {
+  set(ref(database, 'comments/' + comment.id), comment);
+}
+
+export {
+  readAllFeedbackData,
+  readFeedbackData,
+  writeFeedbackData,
+  writeCommentData,
+};
