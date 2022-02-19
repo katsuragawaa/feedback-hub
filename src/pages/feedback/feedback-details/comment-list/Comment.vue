@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { Comment } from '../../../types';
+import { CommentType } from '../../../../types';
 
 const { comment } = defineProps<{
-  comment: Comment;
+  comment: CommentType;
   drawBorder: boolean;
 }>();
-
-// onMounted(async () => {
-//   const response = await fetch('https://randomuser.me/api/');
-//   const data = await response.json();
-//   const randomPerson = data.results[0];
-//   console.log(randomPerson);
-// });
 </script>
 
 <template>

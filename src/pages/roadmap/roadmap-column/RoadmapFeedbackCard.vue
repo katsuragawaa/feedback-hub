@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { Feedback } from '../../../types';
+import { FeedbackType } from '../../../types';
 
 const { feedback } = defineProps<{
-  feedback: Feedback;
+  feedback: FeedbackType;
 }>();
 
 const voted = ref(false);

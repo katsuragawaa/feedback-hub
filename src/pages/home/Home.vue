@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Feedback, SortBy } from '../../types';
+import { FeedbackType, SortByType } from '../../types';
 
 import MenuCards from './menu-cards/MenuCards.vue';
 import FeedbackToolbar from './feedback-toolbar/FeedbackToolbar.vue';
@@ -21,7 +21,7 @@ export default defineComponent({
   data() {
     return {
       selectedFilter: '',
-      feedbacks: [] as Feedback[],
+      feedbacks: [] as FeedbackType[],
       loading: false,
     };
   },
@@ -35,13 +35,13 @@ export default defineComponent({
     handleFilterSelection(filter: string) {
       this.selectedFilter = filter;
     },
-    handleSort(option: SortBy) {
+    handleSort(option: SortByType) {
       const order = option.order === 'asc' ? 'asc' : 'desc'; // TS won't let me just use option.order
       this.feedbacks = _.orderBy(this.feedbacks, [option.key], [order]);
     },
   },
   computed: {
-    filteredFeedbacks(): Feedback[] {
+    filteredFeedbacks(): FeedbackType[] {
       const filter = this.selectedFilter || 'All';
       if (filter === 'All') return this.feedbacks;
 

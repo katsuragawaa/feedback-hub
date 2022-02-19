@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Feedback } from '../../../types';
+import { FeedbackType } from '../../../types';
 
 import GoBackButton from '@/components/GoBackButton.vue';
 import Spinner from '@/components/Spinner.vue';
@@ -16,7 +16,7 @@ const { title, isEdit, loading } = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'saveFeedback', feedback: Feedback): void;
+  (e: 'saveFeedback', feedback: FeedbackType): void;
 }>();
 
 const feedbackTitle = ref('');

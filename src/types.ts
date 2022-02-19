@@ -1,4 +1,4 @@
-export type Feedback = {
+export type FeedbackType = {
   id: string;
   title: string;
   details: string;
@@ -8,18 +8,26 @@ export type Feedback = {
   commentsCount?: number;
 };
 
-export type SortBy = {
+export type SortByType = {
   title: string;
   index: number;
   key: string;
   order: string;
 };
 
-export type Comment = {
+export type CommentType = {
   id: string;
   feedbackId: string;
+  userId: string;
   author: string;
   avatar: string;
   email: string;
   content: string;
 };
+
+export type UserType = {
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
+}

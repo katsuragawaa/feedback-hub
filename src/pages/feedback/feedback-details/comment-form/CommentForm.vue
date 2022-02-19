@@ -1,5 +1,15 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
+import { v4 as uuidv4 } from 'uuid';
+import { writeCommentData } from '../../../../services/DatabaseService';
+import { UserType } from '../../../../types';
+
+const { feedbackId } = defineProps<{ feedbackId: string }>();
+const user = ref({} as UserType);
+
+onMounted(async () => {
+  user.value = await getRandomUser();
+});
 
 const inputComment = ref('');
 const maxWordLength = 250;
@@ -17,6 +27,31 @@ function removeEmptySpaces(value: string) {
 
 function handleCommentSubmit() {
   if (disablePostButton.value) return;
+
+  const comment = {
+    id: uuidv4(),
+    feedbackId: feedbackId,
+    userId: user.value.id,
+    avatar: user.value.avatar,
+    author: user.value.name,
+    email: user.value.email,
+    content: removeEmptySpaces(inputComment.value),
+  };
+
+  writeCommentData(comment);
+}
+
+async function getRandomUser() {
+  const response = await fetch('https://randomuser.me/api/');
+  const data = await response.json();
+  const { name, picture, email } = data.results[0];
+
+  return {
+    id: uuidv4(),
+    name: `${name.first} ${name.last}`,
+    avatar: picture.medium,
+    email,
+  };
 }
 </script>
 

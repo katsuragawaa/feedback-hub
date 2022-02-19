@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Feedback } from '../../types';
+import { FeedbackType } from '../../types';
 
 import RoadmapToolbar from './roadmap-toolbar/RoadmapToolbar.vue';
 import RoadmapColumn from './roadmap-column/RoadmapColumn.vue';
@@ -10,7 +10,7 @@ import { ref, onMounted, computed } from 'vue';
 import _ from 'lodash';
 
 const loading = ref(false);
-const feedbacks = ref([] as Feedback[]);
+const feedbacks = ref([] as FeedbackType[]);
 const currentTab = ref(0);
 
 onMounted(async () => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Feedback } from '../../../types';
+import { FeedbackType } from '../../../types';
 
 import GoBackButton from '@/components/GoBackButton.vue';
 import EditFeedbackButton from '@/components/EditFeedbackButton.vue';
@@ -15,7 +15,7 @@ import { readFeedbackData } from '../../../services/DatabaseService';
 const route = useRoute();
 
 const loading = ref(false);
-const feedback = ref({} as Feedback);
+const feedback = ref({} as FeedbackType);
 
 onMounted(async () => {
   loading.value = true;
@@ -37,7 +37,7 @@ onMounted(async () => {
       <div v-if="!loading" class="mt-8 flex flex-col">
         <FeedbackCard :feedback="feedback" :clickable="false" />
         <CommentList />
-        <CommentForm />
+        <CommentForm :feedbackId="feedback.id" />
       </div>
 
       <div v-else class="my-96 mx-auto w-28 text-purple-700">

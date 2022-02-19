@@ -1,34 +1,11 @@
 <script setup lang="ts">
+import { CommentType } from '../../../../types';
 import Comment from './Comment.vue';
+import { ref, onMounted } from 'vue';
 
-const dummyComments = [
-  {
-    id: '1',
-    author: 'Johnny Walker',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin, nisi id mollis pulvinar, ante turpis ultricies tortor, eget porttitor orci est sit amet urna. Aliquam non tortor rhoncus, congue turpis sit amet, aliquam sem.',
-    email: 'phillip.stanley@example.com',
-    avatar: 'https://randomuser.me/api/portraits/med/men/88.jpg',
-  },
-  {
-    id: '2',
-    author: 'John Doe',
-    content:
-      'Nam vitae cursus sapien. Nam eu dapibus orci. Nulla ultricies mi leo, eu ultrices turpis tempor ac.',
-    email: 'phillip.stanley@example.com',
-    avatar: 'https://randomuser.me/api/portraits/med/men/88.jpg',
-  },
-  {
-    id: '3',
-    author: 'Johnny Walker',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sollicitudin, nisi id mollis pulvinar, ante turpis ultricies tortor, eget porttitor orci est sit amet urna. Aliquam non tortor rhoncus, congue turpis sit amet, aliquam sem.',
-    email: 'mrym.khmrw@example.com',
-    avatar: 'https://randomuser.me/api/portraits/med/men/85.jpg',
-  },
-];
+const comments = ref([] as CommentType[]);
 
-const shouldDrawBorder = (index: number) => dummyComments.length - 1 !== index;
+const shouldDrawBorder = (index: number) => comments.value.length - 1 !== index;
 </script>
 
 <template>
@@ -36,7 +13,7 @@ const shouldDrawBorder = (index: number) => dummyComments.length - 1 !== index;
     <div class="font-bold">2 Comments</div>
 
     <Comment
-      v-for="(comment, index) in dummyComments"
+      v-for="(comment, index) in comments"
       :comment="comment"
       :key="comment.id"
       :drawBorder="shouldDrawBorder(index)"

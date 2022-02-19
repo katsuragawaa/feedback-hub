@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { SortBy } from '../../../types';
+import { SortByType } from '../../../types';
 
 const emit = defineEmits<{
-  (e: 'sort', option: SortBy): void;
+  (e: 'sort', option: SortByType): void;
 }>();
 
 const sortOptions = [
@@ -16,7 +16,7 @@ const sortOptions = [
 const selectedOption = ref(sortOptions[0]);
 const dropdownVisibility = ref(false);
 
-const selectOption = (option: SortBy) => {
+const selectOption = (option: SortByType) => {
   emit('sort', option);
   selectedOption.value = option;
   dropdownVisibility.value = false;

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Feedback } from '../../../types';
+import { FeedbackType } from '../../../types';
 
 import RoadmapFeedbackCard from './RoadmapFeedbackCard.vue';
 
 const { feedbacks } = defineProps<{
-  feedbacks: Feedback[];
+  feedbacks: FeedbackType[];
   title: string;
   description: string;
 }>();

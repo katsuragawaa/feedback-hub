@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Feedback } from '../types';
+import { FeedbackType } from '../types';
 import { PropType, ref } from 'vue';
 import router from '../router';
 
 const { feedback, clickable } = defineProps({
   feedback: {
-    type: Object as PropType<Feedback>,
+    type: Object as PropType<FeedbackType>,
     required: true,
   },
   clickable: {

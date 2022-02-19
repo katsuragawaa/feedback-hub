@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Feedback } from '../../../types';
+import { FeedbackType } from '../../../types';
 import router from '../../../router';
 
 import { defineComponent, PropType } from 'vue';
@@ -18,7 +18,7 @@ export default defineComponent({
       required: true,
     },
     filteredFeedbacks: {
-      type: Array as PropType<Feedback[]>,
+      type: Array as PropType<FeedbackType[]>,
       required: true,
     },
     noFeedback: {

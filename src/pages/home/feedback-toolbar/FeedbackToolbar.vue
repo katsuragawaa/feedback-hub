@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import SortBySelector from './SortBySelector.vue';
 import AddFeedbackButton from '@/components/AddFeedbackButton.vue';
-import { SortBy } from '../../../types';
+import { SortByType } from '../../../types';
 
 const emit = defineEmits<{
-  (e: 'sort', option: SortBy): void;
+  (e: 'sort', option: SortByType): void;
 }>();
 
 const { feedbacksCount } = defineProps<{
   feedbacksCount: number;
 }>();
 
-function handleSort(option: SortBy) {
+function handleSort(option: SortByType) {
   emit('sort', option);
 }
 </script>
