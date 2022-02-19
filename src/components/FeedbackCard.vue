@@ -16,17 +16,13 @@ const { feedback, clickable } = defineProps({
 
 const voted = ref(false);
 
-const vote = () => {
+function handleVote() {
   voted.value = !voted.value;
 
   if (!feedback || !feedback.votesCount) return; // TODO: remove after cleaning type
 
-  if (voted.value) {
-    feedback.votesCount++;
-  } else {
-    feedback.votesCount--;
-  }
-};
+  feedback.votesCount += voted.value ? 1 : -1;
+}
 
 function goToFeedbackDetails() {
   router.push({
@@ -42,7 +38,7 @@ function goToFeedbackDetails() {
       <div
         class="flex h-14 w-11 flex-none cursor-pointer flex-col items-center justify-between rounded-lg bg-blue-600 py-3 px-2 duration-200 md:order-1 md:mt-4 md:h-fit md:w-fit md:flex-row md:py-2 md:px-4"
         :class="voted ? 'bg-opacity-100 text-white' : 'bg-opacity-10'"
-        @click="vote"
+        @click="handleVote"
       >
         <svg
           class="duration-500"
